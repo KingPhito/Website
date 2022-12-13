@@ -1,6 +1,7 @@
 <template>
   <div class="columns is-gapless">
-    <div class="column is-centered is-one-fifth hero is-primary is-fullheight">
+    <div class="column is-one-fifth hero is-primary is-fullheight">
+    <div class="container">
       <section class="section">
         <figure class="image is-3by3">
           <img
@@ -25,16 +26,55 @@
           hopefully Go soon.
         </h2>
       </section>
+    </div></div>
+    <div class="column is-four-fifths">
+      <section class="section">
+        <div class="columns" v-for="rows in socials">
+          <a :href="social.linkUrl" class="column" v-for="social in rows">
+            <figure class="image is-3by3 box">
+              <img :src="social.imageUrl"  style="object-fit: cover;"/>
+            </figure>
+          </a>
+        </div>
+      </section>
     </div>
-    <div class="column is-four-fifths"></div>
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import "../assets/css/main.scss";
-
-#about-me {
-  background: $primary;
-  color: $white;
+<script setup lang="ts">
+interface Social {
+  linkUrl: string;
+  imageUrl: string;
 }
-</style>
+
+const socials: Social[][] = [
+  [
+    {
+      linkUrl: "https://gitlab.com/rdugue1",
+      imageUrl: "/img/socials/gitlab.png",
+    },
+    {
+      linkUrl: "https://www.linkedin.com/in/rdugue/",
+      imageUrl: "/img/socials/linkedin.svg",
+    },
+    {
+      linkUrl: "https://www.polywork.com/kingphito",
+      imageUrl: "/img/socials/polywork.svg",
+    },
+  ],
+  [
+    {
+      linkUrl: "https://www.twitch.tv/kingphito",
+      imageUrl: "/img/socials/twitch.svg",
+    },
+    {
+      linkUrl: "https://twitter.com/KingPhito",
+      imageUrl: "/img/socials/twitter.svg",
+    },
+    {
+      linkUrl: "https://www.youtube.com/channel/UC9_SAi0OE5hp8X44A0HbWcw",
+      imageUrl: "/img/socials/youtube.png",
+    },
+  ],
+];
+</script>
