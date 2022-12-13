@@ -9,10 +9,13 @@
   },
   "devDependencies": {
     "netlify-cli": "^12.2.10",
-    "nuxt": "3.0.0"
+    "nuxt": "3.0.0",
+    "sass": "^1.56.2",
+    "sass-loader": "^13.2.0"
   },
   "dependencies": {
     "@oruga-ui/oruga-next": "^0.5.9",
-    "@oruga-ui/theme-bulma": "^0.2.8"
+    "@oruga-ui/theme-bulma": "^0.2.8",
+    "bulma": "^0.9.4"
   }
 }
