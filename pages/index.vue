@@ -4,8 +4,8 @@
       <section class="section">
         <figure class="image is-3by3">
           <img
-            src="~/assets/images/profile.png"
-            placeholder="~/assets/images/icon.png"
+            src="/img/profile.jpg"
+            alt="A picture of my beautiful face. I am wearing headphones and have a high-top fade"
           />
         </figure>
       </section>
@@ -14,13 +14,15 @@
         <h2 class="subtitle block">
           I'm Ralph. I am a quadriplegic wheelchair user, videogame nerd,
           basketball nerd, and slowly becoming a chess nerd 😀. This website is
-          my attempt at documenting all the things I'm working on.
+          my attempt at documenting all the things I'm working on. I have more
+          passions than time but at least I can keep track of them!
         </h2>
         <h2 class="subtitle block">
           Professionally, I have been a software engineer for nearly 10 years,
           most of which has been spent working with Android. I also do web
           development with this website made with Nuxt 3 and NetlifyCMS being
-          one example.
+          one example. I enjoy working with Kotlin, Typescript, Python, and
+          hopefully Go soon.
         </h2>
       </section>
     </div>
