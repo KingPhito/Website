@@ -52,7 +52,7 @@ For the case of linear search, we would say that the running time is f(n), where
 
 To put it really simply, in the worst case, linear search will have to check every single item in the list. If you are a developer, you will likely find yourself implementing some form of a linear search quite often. However, for an ordered list of values, it scales really terribly. There is a much more efficient algorithm for this case.
 
-#﻿# Binary Search 
+## Binary Search
 
 In a binary search algorithm, we check for a specified value by checking the middle of the list . We then remove all the values that were too high or too low, and then check the middle of the list again. We repeat this process until we find our specified value, cutting the list in half at every check. As we did with linear search, let’s breakdown our steps before implementing the algorithm in Python:
 
