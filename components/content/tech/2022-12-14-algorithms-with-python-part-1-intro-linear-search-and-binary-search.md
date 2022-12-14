@@ -10,7 +10,7 @@ content: tech
 date: 2022-12-14T03:08:33.750Z
 thumbnail: /images/uploads/python-logo.png
 ---
-This is the beginning of a series on writing common computer science algorithms, with some brief analysis. I will be using Khan Academy’s course on algorithms as reference, and I will be implementing all the algorithms that are discussed in Python. In this post I will be tackling linear search and binary search.
+This is the beginning of a series on writing common computer science algorithms, with some brief analysis. I will be using [Khan Academy’s course](https://www.khanacademy.org/computing/computer-science/algorithms) on algorithms as reference, and I will be implementing all the algorithms that are discussed in Python. In this post I will be tackling linear search and binary search.
 
 ## What exactly is an algorithm?
 
@@ -21,7 +21,7 @@ An algorithm is simply a step of rules or procedures to be followed, in order to
 When analyzing the efficiency of an algorithm, there are two main concepts we need to concern ourselves with. The first concept is the running time of an algorithm; the second is the rate of growth of that running time.
 
 * There are many external factors that can affect the time it takes an algorithm to run. For example, we could look at the processing power of the computer running the algorithm, or even the efficiency of the programming language that the algorithm is being run in. But for algorithm analysis, we want to think of running time in terms of a given algorithm’s input size. We consider the input size to be the variable factor in an algorithm’s running time.
-* The rate of growth measures how the running time of an algorithm increases as the input size increases. We take the most significant part of a given running time equation, and disregard the rest. We use asymptotic notation to express this. There are a few different forms for asymptotic notation, but we will mainly focus on big-O notation, because it tends to be the most effective at describing worst-case running time.
+* The rate of growth measures how the running time of an algorithm increases as the input size increases. We take the most significant part of a given running time equation, and disregard the rest. We use [asymptotic notation](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation) to express this. There are a few different forms for asymptotic notation, but we will mainly focus on big-O notation, because it tends to be the most effective at describing worst-case running time.
 
 ## Linear Search
 
@@ -46,7 +46,7 @@ def linearSearch(v):
 		return str(v) + ' is not in the range 1-100'
 ```
 
-This is pretty straightforward. No complex data structures needed here. We use Python’s handy range function to create a list of integers from 1 to 100, and then we use a for-loop to iterate through that list. The else statement handles step of the algorithm, which deals with values outside of our specified range.
+This is pretty straightforward. No complex data structures needed here. We use Python’s handy [range function](https://docs.python.org/3/library/functions.html#func-range) to create a list of integers from 1 to 100, and then we use a for-loop to iterate through that list. The else statement handles step of the algorithm, which deals with values outside of our specified range.
 
 For the case of linear search, we would say that the running time is f(n), where n is the size of our list(100), and the rate of growth is O(n). This simply means that the running time is some function of n that factors in all the constants that the algorithm needs to run, and the rate of growth is at most k* n, where k is some random constant that is greater than 0.
 
@@ -81,7 +81,7 @@ def binarySearch(v):
 		return str(v) + ' is not in the range of 1-100'
 ```
 
-We use the range function again to create our list, and then we initialize the start and end indexes. We use the len function to get the index of the last item in the list. Instead of the for-loop, we’re going with the while-loop since it makes more intuitive sense when we’re not iterating through every item in l. As with our linear search function, the else statement handles inputs that are outside the range of 1 to 100.
+We use the range function again to create our list, and then we initialize the start and end indexes. We use the [len function](https://docs.python.org/3/library/functions.html#len) to get the index of the last item in the list. Instead of the for-loop, we’re going with the while-loop since it makes more intuitive sense when we’re not iterating through every item in l. As with our linear search function, the else statement handles inputs that are outside the range of 1 to 100.
 
 For binary search, we say the running time f(lg n), and the rate of growth is O(lg n). If you are not familiar with logarithms, lg is shorthand for base-2-logarithm. So in other words, for our example of numbers from 1 to 100, it would take at most 7 guesses to get our target value using this algorithm. We get this by calculating lg 100, and since this evaluates to some decimal value between 6 and 7, we know we can halve the list 6 times and make 7 guesses. The 7th guess will either be our target value, or the target value isn’t in the range.
 
