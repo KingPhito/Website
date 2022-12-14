@@ -11,9 +11,9 @@
       <div class="navbar-menu">
         <div class="navbar-end">
           <NuxtLink to="/" class="navbar-item">Home</NuxtLink>
-          <NuxtLink to="/" class="navbar-item">Blog</NuxtLink>
-          <NuxtLink to="/" class="navbar-item">Projects</NuxtLink>
-          <NuxtLink to="/" class="navbar-item">Contact</NuxtLink>
+          <NuxtLink to="/blog" class="navbar-item">Blog</NuxtLink>
+          <NuxtLink to="/projects" class="navbar-item">Projects</NuxtLink>
+          <NuxtLink to="/contact" class="navbar-item">Contact</NuxtLink>
         </div>
       </div>
     </nav>

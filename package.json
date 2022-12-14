@@ -8,6 +8,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/content": "^2.2.2",
     "netlify-cli": "^12.2.10",
     "nuxt": "3.0.0",
     "sass": "^1.56.2",
