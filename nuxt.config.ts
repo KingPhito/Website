@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     ssr: true,
+    runtimeConfig: {
+        public: {
+            GITLAB_API_TOKEN: process.env.GITLAB_API_TOKEN
+        }
+    },
     app: {
         head: {
             charset: 'utf-16',
