@@ -12,13 +12,17 @@ thumbnail: /images/uploads/gopher.png
 
 Pointers were a tricky concept for me when I first started learning C++ and computer science in general. Over the years, I found myself avoiding languages and code-bases that make use of them. However I have been interested in learning Go, and it just so happens to have pointers. I decided that, in learning Go, I should do my due diligence to fully understand how pointers work and when to use them. Let’s first dive into exactly what a pointer is in Go.
 
+---
+
 ## What Are They?
 
 To understand pointers, we must understand a type of computer data storage called [random access memory (RAM)](https://en.wikipedia.org/wiki/Random-access_memory). RAM stores data in memory cells, and these cells have unique identifiers. We refer to these identifiers as addresses, and this where pointers and variables come into play.
 
 Let’s say we write a computer program(not necessarily in Go, any language works for this explanation). In this program, we create a variable and assign it a value. When we run this program, the value is stored in memory cells and the variable refers to that value. So then if we were to change the value of this variable, we would just be writing over the current data at that address of memory cells. But what if we needed to assign another variable to that same address?
 
-In Go, a pointer is a type of variable that points to an address of memory cells, as to the value at said address. We can still access and manipulate the value at that address like a non-pointer variable, but pointers give us the ability to point several variables, via an address, to a shared value. Like in C/C++, we use the * operator to declare a new pointer. We can declare a new pointer variable without initializing it, we can declare and assign one to the address of an existing variable, or we can declare and initialize one to a default value. Let’s take a look at some code examples:
+In Go, a pointer is a type of variable that points to an address of memory cells, as to the value at said address. We can still access and manipulate the value at that address like a non-pointer variable, but pointers give us the ability to point several variables, via an address, to a shared value. Like in C/C++, we use the * operator to declare a new pointer. We can declare a new pointer variable without initializing it, we can declare and assign one to the address of an existing variable, or we can declare and initialize one to a default value. Let’s take a look at some code examples.
+
+---
 
 ## How Do They Work?
 
@@ -116,6 +120,8 @@ The value at pointer2 is now: 12
 
 This pretty much covers the different operations we can perform with pointers in Go. Now let’s discuss when we might want to make use of them.
 
+---
+
 ## What Are The Use Cases?
 
 There is a lot of discussion to be found on when it is appropriate or necessary to use pointers. The main things we want to consider are the variable type, and what operations need to be performed with the data being passed around.
@@ -124,7 +130,9 @@ Maps and slices are implemented with an underlying pointer to the data that they
 
 Larger and more complex structs on the other hand, can become quite expensive when copying them in memory, so having different pointers to one address will often make sense where explicit copies aren’t necessary. With primitive data types however, it is usually simpler to pass the value as opposed to a pointer. We used a primitive data type(int) in the code examples above for the sake of simplicity, but generally speaking, it is actually simpler to to pass the value of the variable. This makes keeping track of when the value of said variable changes less complex.
 
-Another case to consider is when we want a function or method to change the value of the variable that is passed to it (whether it be a receiver or a parameter). If we were to simply pass a non-pointer variable in this case, a copy of the value of that variable would be stored at a new memory address. This would not give us the ability to manipulate the parameter or receiver that was originally passed to the function. So in this case we should pass a pointer to the variable, giving us access to the value at that specific address. [The Golang Github wik](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type)i gives some pretty detailed guidelines on using pointers with methods.
+Another case to consider is when we want a function or method to change the value of the variable that is passed to it (whether it be a receiver or a parameter). If we were to simply pass a non-pointer variable in this case, a copy of the value of that variable would be stored at a new memory address. This would not give us the ability to manipulate the parameter or receiver that was originally passed to the function. So in this case we should pass a pointer to the variable, giving us access to the value at that specific address. [The Golang Github wiki](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type) gives some pretty detailed guidelines on using pointers with methods.
+
+---
 
 ## Further Reading
 
