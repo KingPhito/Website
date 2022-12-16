@@ -30,11 +30,13 @@
     <div class="column is-four-fifths">
       <section class="section">
         <div class="columns" v-for="rows in socials">
-          <a :href="social.linkUrl" class="column" v-for="social in rows">
-            <figure class="image is-3by3 box">
-              <img :src="social.imageUrl"  style="object-fit: cover;"/>
-            </figure>
-          </a>
+          <div class="column is-one-third" v-for="social in rows">
+            <a :href="social.linkUrl" class="box">
+              <figure class="image is-3by3">
+                <img :src="social.imageUrl"  :alt="social.alt" object-fit: cover;/>
+              </figure>
+            </a>
+          </div>
         </div>
       </section>
     </div>
@@ -45,6 +47,7 @@
 interface Social {
   linkUrl: string;
   imageUrl: string;
+  alt: string;
 }
 
 const socials: Social[][] = [
@@ -52,28 +55,34 @@ const socials: Social[][] = [
     {
       linkUrl: "https://gitlab.com/rdugue1",
       imageUrl: "/img/socials/gitlab.png",
+      alt: "Visit my GitLab"
     },
     {
       linkUrl: "https://www.linkedin.com/in/rdugue/",
       imageUrl: "/img/socials/linkedin.svg",
+      alt: "Visit my LinkedIn"
     },
     {
       linkUrl: "https://www.polywork.com/kingphito",
       imageUrl: "/img/socials/polywork.svg",
+      alt: "Visit my Polywork page"
     },
   ],
   [
     {
       linkUrl: "https://www.twitch.tv/kingphito",
       imageUrl: "/img/socials/twitch.svg",
+      alt: "Visit my Twitch channel"
     },
     {
       linkUrl: "https://twitter.com/KingPhito",
       imageUrl: "/img/socials/twitter.svg",
+      alt: "Vist my Twitter account"
     },
     {
       linkUrl: "https://www.youtube.com/channel/UC9_SAi0OE5hp8X44A0HbWcw",
       imageUrl: "/img/socials/youtube.png",
+      alt: "Vist my Youtube"
     },
   ],
 ];

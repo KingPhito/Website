@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    ssr: true,
     app: {
         head: {
             charset: 'utf-16',
@@ -11,9 +12,20 @@ export default defineNuxtConfig({
             ],
         }
     },
-    ssr: false,
     css: ['~/assets/css/main.scss'],
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {},
+        },
+    },
     modules: [
         '@nuxt/content'
     ],
+    content: {
+        highlight: {
+            theme: 'github-dark',
+            preload: ["python"]
+        }
+    }
 })

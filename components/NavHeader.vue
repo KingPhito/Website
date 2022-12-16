@@ -1,6 +1,5 @@
 <template>
-  <header class="box">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <header class="navbar box" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <NuxtLink to="/" class="navbar-item"
           ><img
@@ -16,13 +15,9 @@
           <NuxtLink to="/contact" class="navbar-item">Contact</NuxtLink>
         </div>
       </div>
-    </nav>
-  </header>
+    </header>
 </template>
 
 <script setup>
 const route = useRoute();
-
-// When accessing /posts/1, route.params.id will be 1
-console.log(route.params.id);
 </script>

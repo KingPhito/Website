@@ -8,15 +8,20 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.2.2",
-    "netlify-cli": "^12.2.10",
-    "nuxt": "3.0.0",
-    "sass": "^1.56.2",
-    "sass-loader": "^13.2.0"
+    "@nuxt/content": "latest",
+    "@nuxt/postcss8": "latest",
+    "@tailwindcss/typography": "latest",
+    "autoprefixer": "latest",
+    "netlify-cli": "latest",
+    "nuxt": "latest",
+    "postcss": "latest",
+    "sass": "latest",
+    "sass-loader": "latest",
+    "tailwindcss": "latest"
   },
   "dependencies": {
-    "@oruga-ui/oruga-next": "^0.5.9",
-    "@oruga-ui/theme-bulma": "^0.2.8",
-    "bulma": "^0.9.4"
+    "@oruga-ui/oruga-next": "latest",
+    "@oruga-ui/theme-bulma": "latest",
+    "bulma": "latest"
   }
 }

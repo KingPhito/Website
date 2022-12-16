@@ -1,6 +1,9 @@
 <template>
   <NavHeader />
   <body>
-    <NuxtPage />
+    <Suspense>
+      <NuxtPage />
+      <template #fallback> Loading... </template>
+    </Suspense>
   </body>
 </template>
