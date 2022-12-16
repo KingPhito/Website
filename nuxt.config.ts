@@ -30,7 +30,7 @@ export default defineNuxtConfig({
     content: {
         highlight: {
             theme: 'github-dark',
-            preload: ["python"]
+            preload: ["python", "go"]
         }
     }
 })
