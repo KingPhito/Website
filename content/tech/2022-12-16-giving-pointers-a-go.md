@@ -5,7 +5,7 @@ description: This is an exploration into how pointers work in the Go programming
   language. It is a breakdown of what they are, the syntax of how they are used,
   and the appropriate use cases for them.
 content: tech
-date: 2022-12-16T03:37:38.083Z
+date: 2017-12-14T03:37:38.083Z
 thumbnail: /images/uploads/gopher.png
 ---
 # Giving Pointers a Go
