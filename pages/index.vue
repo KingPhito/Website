@@ -33,7 +33,7 @@
           <div class="column is-one-third" v-for="social in rows">
             <a :href="social.linkUrl" class="box">
               <figure class="image is-3by3">
-                <img :src="social.imageUrl"  :alt="social.alt" object-fit: cover;/>
+                <img :src="social.imageUrl"  :alt="social.alt" style="object-fit: cover;"/>
               </figure>
             </a>
           </div>
