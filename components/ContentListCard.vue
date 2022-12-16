@@ -14,13 +14,15 @@
         <div class="content">
           {{ content.description }}
           <br>
-          <time datetime="2016-1-1">{{ content.datetime }}</time>
+          <time>{{ format(Date.parse(content.datetime), 'MMM dd, yyyy') }}</time>
         </div>
       </div>
     </a>
 </template>
 
 <script setup lang="ts">
+import { format} from 'date-fns'
+
 export interface CardContent {
   title: 'Default Title',
   thumbnail: '/img/profile',
@@ -28,7 +30,6 @@ export interface CardContent {
   datetime: 'Now...',
   path: '/'
 }
-
 
 const props = defineProps<{content: CardContent}>()
 </script>
