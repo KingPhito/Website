@@ -25,7 +25,7 @@ const getCards = async (): Promise<CardContent[][]> => {
     const temp = data.value?.map(card => {
         return <CardContent>{
             title: card.title,
-            thumbnail: "@/assets/" + card.thumbnail,
+            thumbnail: card.thumbnail,
             description: card.description,
             datetime: card.date,
             path: card._path || '/'
