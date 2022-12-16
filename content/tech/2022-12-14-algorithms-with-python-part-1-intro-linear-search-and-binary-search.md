@@ -8,7 +8,7 @@ description: This is the beginning of a series on writing common computer
   linear search and binary search.
 content: tech
 date: 2022-12-14T03:08:33.750Z
-thumbnail: /images/uploads/python-logo.png
+thumbnail: /images/uploads/python.png
 ---
 # Algorithms With Python: Part 1 - Intro, Linear Search and Binary Search
 
