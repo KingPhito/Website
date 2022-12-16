@@ -5,7 +5,7 @@ description: A top-level look at the components that make up a neural network.
   This details the components of an artificial neuron, the layers of a neural
   network, the process of feeding it data, and how "leaning" happens.
 content: tech
-date: 2022-12-16T20:23:08.832Z
+date: 2019-07-13T19:23:08.832Z
 thumbnail: /images/uploads/vqope-1c4xc4y.jpg
 ---
 # Neural Network Building Blocks
@@ -42,16 +42,14 @@ Artificial NNs have a layered design:
 * **Hidden layer(s):** These layers of neurons are for processing the data. These layers will have corresponding weights, a bias, and an activation function applied to the data that they are fed, unlike the input layer. There’s a bit of artistry and science involved in deciding how many hidden layers to use. For now what’s important to understand is that the data can go through one or more layers of understanding. Having more than one hidden layer, is what makes an NN “deep,” hence the term “deep learning.”
 * **Output layer:** The output layer, as you may have guessed, is the layer of neurons responsible for representing the output of our NN. For example let’s say we wanted to classify our images into 3 different categories(I’ll use the term labels going forward, as is common in this field). A simple output layer setup would be to have 3 neurons, each representing one of the three labels.
 
-
 The process of feeding data forward through these layers is called **forward-propagation**.
 
-
+![Diagram of the neural network explained above.](/images/uploads/neural-network.png)
 
 So now we have a model that takes in data, analyzes it, and outputs some result. But right now this model doesn’t learn. Let’s get into what the “learning process” actually is. We’ll start by talking a little bit about the data.
 
-
-
 ## Datasets
+
 There are two main components of datasets in for NNs:
 
 * **Features:** The features are descriptions of the data we are looking at. This can take many forms. Let’s continue with the above example of images as a dataset. The features of each image would be the individual pixels.
@@ -59,23 +57,23 @@ There are two main components of datasets in for NNs:
   So ideally we want our NN to take the features for a given image, process them, and output the label assigned to that image. Now what do we do when it guesses the wrong label?
 
 ## Learning
+
 This is where the magic of learning happens. When we have an incorrect label, our NN needs to go through a process of correcting the weights and biases at every layer. There are essentially 3-steps to this process:
 
 1. **Cost function:** This is a function that is used to calculate just how far from the correct label the output was. Think of it as assigning an “error cost” to the output. There are many different loss functions, and it will depend on what your NN is trying to do. For example, when making a classification model, we might choose a [cross-entropy](https://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html#cross-entropy) function. This is often also referred to as a loss function.
 2. **Backward-propagation:** This is the process of going backwards through our NN to assign individual error costs to each weight and bias. This is done use partial derivatives and something called the [chain rule](https://www.khanacademy.org/math/ap-calculus-ab/ab-differentiation-2-new/ab-3-1a/v/chain-rule-introduction#:~:text=The%20chain%20rule%20states%20that,and%20g(x)%3Dx%C2%B2.).
 3. **Optimization:** In this step we use a function(typically called an optimizer) to update each weight and bias based on the error costs from the back-propagation. Two popular functions for this are [SGD](https://en.wikipedia.org/wiki/Stochastic_gradient_descent) and[ Adam](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#adam).
 
-
 So we calculate our error cost, backward-propagate it to every individual weight and bias, and then adjust said weights and biases to perform the next forward-propagation. This process is repeated until the error cost has been minimized as much as possible. And if we’ve done everything correctly, our NN should be able to perform it’s given task with high accuracy. A good practice is to have two separate datasets: one for **validation** and one for performing the **training**. This ensures that our model is capable of handling data it hasn’t already seen, and is thus ready for potential real world applications.
 
 ## Resources
+
 That covers all the components of an NN. There is still quite a lot to explore within each individual topic in this post, and I encourage you to dive deeper. But with this information, some Python knowledge, you should be able to build and train your own NNs. Here are some popular libraries to facilitate that:
 
 * [TensorFlow](https://www.tensorflow.org/)
 * [MXNet](https://mxnet.apache.org/versions/1.9.1/)
 * [PyTorch](https://pytorch.org/)
 * [Keras](https://keras.io/)
-
 
 All these frameworks have benefits and limitations. If you’re looking to get started super fast, there is a new library called fast.ai. It is used to teach a [course on deep learning](https://course.fast.ai/), and they use the top-down approach to teaching that I mentioned at the start of the post. The [fast.ai](https://www.fast.ai/) library takes care of a lot of the boilerplate and best practices that likely won’t come out of the box with the above mentioned libraries. I am currently doing the course myself, and so far it is very insightful.
 
