@@ -9,7 +9,7 @@ description: "Previously we covered search and sort algorithms. In this
   smaller instances of a problem until you hit the base case: where the problem
   is trivial to compute."
 content: tech
-date: 2023-01-01T03:33:45.927Z
+date: 2017-11-08T03:33:45.927Z
 thumbnail: /images/uploads/python.png
 ---
 
