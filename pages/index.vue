@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-gapless">
     <div class="column is-one-fifth hero is-primary is-fullheight">
-    <div class="container">
+    <div class="container" style="margin: auto;">
       <section class="section">
         <figure class="image is-3by3">
           <img
@@ -25,6 +25,13 @@
           one example. I enjoy working with Kotlin, Typescript, Python, and
           hopefully Go soon.
         </h2>
+      </section>
+      <section class="section">
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <a href="/resume.pdf" target="_blank" class="button is-large" style="text-align: center;">Resume</a>
+          </div>
+        </div>
       </section>
     </div></div>
     <div class="column is-four-fifths">
