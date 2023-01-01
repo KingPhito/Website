@@ -19,6 +19,7 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Summary", name: "description", widget: "string"}
       - {label: "Content", name: "content"}
+      - {label: "Publshing Stage", name: "stage", widget: "select", options: ["draft", "publish"]}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -36,6 +37,7 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Summary", name: "description", widget: "string"}
       - {label: "Content", name: "content"}
+      - {label: "Publshing Stage", name: "stage", widget: "select", options: ["draft", "publish"]}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -52,5 +54,6 @@ collections:
       - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Content", name: "content"}
+      - {label: "Publshing Stage", name: "stage", widget: "select", options: ["draft", "publish"]}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Body", name: "body", widget: "markdown"}

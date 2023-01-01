@@ -10,6 +10,7 @@ description: In our first installment of this series, we covered two common
   be looking at selection sort and insertion sort, and analyzing their
   performance.
 content: tech
+stage: "publish"
 date: 2017-05-20T02:02:55.984Z
 thumbnail: /images/uploads/python.png
 ---

@@ -14,6 +14,7 @@ import type { MarkdownParsedContent } from '@nuxt/content/dist/runtime/types'
 
 interface BlogCard extends MarkdownParsedContent {
     thumbnail: string;
+    stage: string;
     date: string;
     content: string;
 }
@@ -22,7 +23,7 @@ const empty: CardContent[] = []
 const getCards = async (): Promise<CardContent[][]> => {
     const { data } = await useAsyncData<BlogCard[]>(() => queryContent<BlogCard>('/').find())
     const result: CardContent[][] = []
-    const temp = data.value?.map(card => {
+    const temp = data.value?.filter(card => card.stage == "publish").map(card => {
         return <CardContent>{
             title: card.title,
             thumbnail: card.thumbnail,

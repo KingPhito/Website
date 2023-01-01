@@ -5,6 +5,7 @@ description: A top-level look at the components that make up a neural network.
   This details the components of an artificial neuron, the layers of a neural
   network, the process of feeding it data, and how "leaning" happens.
 content: tech
+stage: "publish"
 date: 2019-07-13T19:23:08.832Z
 thumbnail: /images/uploads/vqope-1c4xc4y.jpg
 ---
@@ -18,9 +19,13 @@ Recently however, I have come to believe that this is a terrible approach. After
 
 For those reasons, I won’t be delving very deeply at all into the mathematical principles behind neural network architecture in this post, nor will I use code examples. Ideally anyone with a healthy curiosity about NNs should be able to follow along, and later on I will provide links to resources that will allow you to implement your own. With all of that said, let’s start with taking a look at what NNs are trying to model.
 
+---
+
 ## The Human Brain
 
 Our brains can be considered to be extremely complex machines. Writing software to perform even the simplest of tasks that humans do with ease can often be difficult work. This has led many software engineers down the path of trying to create software that mimics how our brain functions, and give computers the same logic and reasoning capabilities. This line of thinking is what led to the development of artificial neural networks. They are loosely modeled after the neural networks in our brains. Our brains are made out of billions of cells called neurons. These neurons can send and receive electro-chemical signals, which they use to communicate and perform the functions of the brain. The term “neural network” is used to describe this system, and just like the NNs in our brains, artificial NNs are made of their own kind of neurons.
+
+---
 
 ## Artificial Neurons
 
@@ -32,7 +37,9 @@ Much like neurons in our brains, artificial-neurons are the core components of a
 * **Activation function:** This is what determines the final output that the neuron “fires.” It takes the sum of the previous parts, applies an algorithm, and sends off a value. Different activation functions are used depending on the kind of output we want.
 * **Output:** The final output of the neuron. This output could feed another neuron or be the final output of the NN.
 
-  ![Diagram of an artificial neuron described above.](/images/uploads/vqope-1c4xc4y.jpg)
+![Diagram of an artificial neuron described above.](/images/uploads/vqope-1c4xc4y.jpg)
+
+---
 
 ## Neural Network Architecture
 
@@ -48,6 +55,8 @@ The process of feeding data forward through these layers is called **forward-pro
 
 So now we have a model that takes in data, analyzes it, and outputs some result. But right now this model doesn’t learn. Let’s get into what the “learning process” actually is. We’ll start by talking a little bit about the data.
 
+---
+
 ## Datasets
 
 There are two main components of datasets in for NNs:
@@ -55,6 +64,8 @@ There are two main components of datasets in for NNs:
 * **Features:** The features are descriptions of the data we are looking at. This can take many forms. Let’s continue with the above example of images as a dataset. The features of each image would be the individual pixels.
 * **Labels:** The labels are simply what we want our NN to output about our data. They are what our NN needs to see or predict.
   So ideally we want our NN to take the features for a given image, process them, and output the label assigned to that image. Now what do we do when it guesses the wrong label?
+
+---
 
 ## Learning
 
@@ -65,6 +76,8 @@ This is where the magic of learning happens. When we have an incorrect label, ou
 3. **Optimization:** In this step we use a function(typically called an optimizer) to update each weight and bias based on the error costs from the back-propagation. Two popular functions for this are [SGD](https://en.wikipedia.org/wiki/Stochastic_gradient_descent) and[ Adam](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#adam).
 
 So we calculate our error cost, backward-propagate it to every individual weight and bias, and then adjust said weights and biases to perform the next forward-propagation. This process is repeated until the error cost has been minimized as much as possible. And if we’ve done everything correctly, our NN should be able to perform it’s given task with high accuracy. A good practice is to have two separate datasets: one for **validation** and one for performing the **training**. This ensures that our model is capable of handling data it hasn’t already seen, and is thus ready for potential real world applications.
+
+---
 
 ## Resources
 

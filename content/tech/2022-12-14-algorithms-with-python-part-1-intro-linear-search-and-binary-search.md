@@ -7,6 +7,7 @@ description: This is the beginning of a series on writing common computer
   algorithms that are discussed in Python. In this post I will be tackling
   linear search and binary search.
 content: tech
+stage: "publish"
 date: 2017-04-29T02:08:33.750Z
 thumbnail: /images/uploads/python.png
 ---
