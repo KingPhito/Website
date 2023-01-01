@@ -31,7 +31,7 @@ const getCards = async (): Promise<CardContent[][]> => {
             path: card._path || '/'
         }
     }) || empty
-    temp.sort((a: CardContent, b: CardContent) => Date.parse(b.datetime) - Date.parse(b.datetime))
+    temp.sort((a: CardContent, b: CardContent) => Date.parse(b.datetime) - Date.parse(a.datetime))
     while (temp.length) result.push(temp.splice(0, 3))
     return result
 }
