@@ -33,7 +33,7 @@ There currently isn't a way currently to create a library project from Android s
 
 That's all there is to creating a library module! Now this module could be added to another app module in this project for example, but that's not what we're going for. What we want, however, is a dependency that can be pulled from a repository like we're used to doing with Gradle. 
 
-## Create The Publication
+# Create The Publication
 
 So next we need to create the Maven publication that we will be publishing to:
 
@@ -74,4 +74,4 @@ This is the `gitlab-ci.yml` file which goes In the root directory of our project
 
 # Conclusion
 
-This is all we need to manage our own Android Library repository. The project I am using in this example is just a simple utility library I am working on to help speed up my own development. It's still a work in progress, but feel free to [check it out](https://gitlab.com/rdugue1/PhitoArch). It focuses on common boilerplate code for Jetpack Compose projects.)
+This is all we need to manage our own Android Library repository. The project I am using in this example is just a simple utility library I am working on to help speed up my own development. It's still a work in progress, but feel free to [check it out](https://gitlab.com/rdugue1/PhitoArch). It focuses on common boilerplate code for Jetpack Compose projects.
