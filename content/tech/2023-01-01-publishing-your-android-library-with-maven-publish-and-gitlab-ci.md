@@ -25,7 +25,8 @@ For now however all you will need is Android Studio and a GitLab account to foll
 
 | Part 1 | Part 2 |
 |---|---|
-| ![Create project code.](/images/uploads/create-project.png)|  ![Create project 2](/images/uploads/create-project-2.png) |
+|![Create project code.](/images/uploads/create-project.png)|![Create project 2](/images/uploads/create-project-2.png)|
+
 There currently isn't a way currently to create a library project from Android studio, so start with an empty activity project or an empty compose activity project. fill out the usual project specifications, and create the project. Our next step will be to go into the app level gradle file, and convert the module into a library module. At this time we can also add the [Maven Publish](https://docs.gradle.org/current/userguide/publishing_maven.html) plugin to our project:
 
 ![Convert to library.](/images/uploads/convert-to-library.png)
