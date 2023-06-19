@@ -6,10 +6,9 @@ description: This is the beginning of a series on writing common computer
   course on algorithms as reference, and I will be implementing all the
   algorithms that are discussed in Python. In this post I will be tackling
   linear search and binary search.
-content: tech
-stage: "publish"
-date: 2017-04-29T02:08:33.750Z
-thumbnail: /images/uploads/python.png
+content: python
+date: 2022-12-14T03:08:33.750Z
+thumbnail: /images/uploads/python-logo.png
 ---
 # Algorithms With Python: Part 1 - Intro, Linear Search and Binary Search
 

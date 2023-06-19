@@ -8,7 +8,7 @@ description: "Previously we covered search and sort algorithms. In this
   that to solve the original problem. Basically, you continuously look for
   smaller instances of a problem until you hit the base case: where the problem
   is trivial to compute."
-content: tech
+content: python
 stage: "publish"
 date: 2017-11-08T03:33:45.927Z
 thumbnail: /images/uploads/python.png

@@ -6,7 +6,7 @@ description: This is a practical guide to publishing and maintaining an Android
   development. We all rely on them to speed up our development process. If
   you're looking for a guide to managing your own library project, hopefully
   this helps.
-content: tech
+content: android
 stage: publish
 date: 2023-06-12T10:28:41.510Z
 thumbnail: /images/uploads/android_robot.png

@@ -6,14 +6,14 @@ media_folder: "public/images/uploads"
 public_folder: "/images/uploads" 
 
 collections:
-  - name: "tech" # Used in routes, e.g., /admin/collections/blog
-    label: "Tech" # Used in the UI
-    folder: "content/tech" # The path to the folder where the documents are stored
+  - name: "android" # Used in routes, e.g., /admin/collections/blog
+    label: "Android" # Used in the UI
+    folder: "content/android" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     filter:
       field: content 
-      value: tech
+      value: android
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "Title", name: "title", widget: "string"}
@@ -24,14 +24,14 @@ collections:
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
 
-  - name: "personal" # Used in routes, e.g., /admin/collections/blog
-    label: "Personal" # Used in the UI
-    folder: "content/personal" # The path to the folder where the documents are stored
+  - name: "python" # Used in routes, e.g., /admin/collections/blog
+    label: "Python" # Used in the UI
+    folder: "content/python" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     filter:
       field: content 
-      value: personal
+      value: python
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "Title", name: "title", widget: "string"}
@@ -42,6 +42,78 @@ collections:
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
 
+  - name: "kotlin" # Used in routes, e.g., /admin/collections/blog
+    label: "Kotlin" # Used in the UI
+    folder: "content/kotlin" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    filter:
+      field: content 
+      value: kotlin
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Summary", name: "description", widget: "string"}
+      - {label: "Content", name: "content"}
+      - {label: "Publshing Stage", name: "stage", widget: "select", options: ["draft", "publish"]}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "go" # Used in routes, e.g., /admin/collections/blog
+    label: "Golang" # Used in the UI
+    folder: "content/go" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    filter:
+      field: content 
+      value: go
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Summary", name: "description", widget: "string"}
+      - {label: "Content", name: "content"}
+      - {label: "Publshing Stage", name: "stage", widget: "select", options: ["draft", "publish"]}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  
+  - name: "ml" # Used in routes, e.g., /admin/collections/blog
+    label: "Machine Learning" # Used in the UI
+    folder: "content/ml" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    filter:
+      field: content 
+      value: ml
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Summary", name: "description", widget: "string"}
+      - {label: "Content", name: "content"}
+      - {label: "Publshing Stage", name: "stage", widget: "select", options: ["draft", "publish"]}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "opinion" # Used in routes, e.g., /admin/collections/blog
+    label: "Opinion" # Used in the UI
+    folder: "content/opinion" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    filter:
+      field: content 
+      value: opinion
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Summary", name: "description", widget: "string"}
+      - {label: "Content", name: "content"}
+      - {label: "Publshing Stage", name: "stage", widget: "select", options: ["draft", "publish"]}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  
   - name: "poetry" # Used in routes, e.g., /admin/collections/blog
     label: "Poetry" # Used in the UI
     folder: "content/poetry" # The path to the folder where the documents are stored

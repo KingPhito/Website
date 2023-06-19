@@ -1,46 +1,45 @@
 <template>
   <div class="columns is-gapless">
     <div class="column is-one-fifth hero is-primary is-fullheight">
-    <div class="container" style="margin: auto;">
-      <section class="section">
-        <figure class="image is-3by3">
-          <img
-            src="/img/profile.jpg"
-            alt="A picture of my beautiful face. I am wearing headphones and have a high-top fade"
-          />
-        </figure>
-      </section>
-      <section class="section">
-        <h1 class="title">About Me</h1>
-        <h2 class="subtitle block">
-          I'm Ralph. I am a quadriplegic wheelchair user, videogame nerd,
-          basketball nerd, and slowly becoming a chess nerd 😀. This website is
-          my attempt at documenting all the things I'm working on. I have more
-          passions than time but at least I can keep track of them!
-        </h2>
-        <h2 class="subtitle block">
-          Professionally, I have been a software engineer for nearly 10 years,
-          most of which has been spent working with Android. I also do web
-          development with this website made with Nuxt 3 and NetlifyCMS being
-          one example. I enjoy working with Kotlin, Typescript, Python, and
-          hopefully Go soon.
-        </h2>
-      </section>
-      <section class="section">
-        <div class="columns is-centered">
-          <div class="column is-half">
-            <a href="/resume.pdf" target="_blank" class="button is-large" style="text-align: center;">Resume</a>
+      <div class="container" style="margin: auto;">
+        <section class="section">
+          <figure class="image is-3by3">
+            <img src="/img/profile.jpg" class="is-rounded"
+              alt="A picture of my beautiful face. I am wearing headphones and have a high-top fade" />
+          </figure>
+        </section>
+        <section class="section">
+          <h1 class="title">About Me</h1>
+          <h2 class="subtitle block">
+            I'm Ralph. I am a quadriplegic wheelchair user, videogame nerd,
+            basketball nerd, and slowly becoming a chess nerd 😀. This website is
+            my attempt at documenting all the things I'm working on. I have more
+            passions than time but at least I can keep track of them!
+          </h2>
+          <h2 class="subtitle block">
+            Professionally, I have been a software engineer for over 10 years,
+            most of which has been spent working with Android. I also do web
+            development with this website made with Nuxt 3 and NetlifyCMS being
+            one example. I enjoy working with Kotlin, Typescript, Python, and
+            hopefully Go soon.
+          </h2>
+        </section>
+        <section class="section">
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <a href="/resume.pdf" target="_blank" class="button is-large" style="text-align: center;">Resume</a>
+            </div>
           </div>
-        </div>
-      </section>
-    </div></div>
+        </section>
+      </div>
+    </div>
     <div class="column is-four-fifths">
       <section class="section">
         <div class="columns" v-for="rows in socials">
           <div class="column is-one-third" v-for="social in rows">
             <a :href="social.linkUrl" class="box">
               <figure class="image is-3by3">
-                <img :src="social.imageUrl"  :alt="social.alt" style="object-fit: cover;"/>
+                <img :src="social.imageUrl" :alt="social.alt" style="object-fit: cover;" />
               </figure>
             </a>
           </div>

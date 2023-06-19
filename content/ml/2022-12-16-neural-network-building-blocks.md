@@ -4,7 +4,7 @@ title: Neural Network Building Blocks
 description: A top-level look at the components that make up a neural network.
   This details the components of an artificial neuron, the layers of a neural
   network, the process of feeding it data, and how "leaning" happens.
-content: tech
+content: ml
 stage: "publish"
 date: 2019-07-13T19:23:08.832Z
 thumbnail: /images/uploads/vqope-1c4xc4y.jpg

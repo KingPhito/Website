@@ -9,7 +9,7 @@ description: In our first installment of this series, we covered two common
   order. That is precisely what a sorting algorithm is for. In this post we will
   be looking at selection sort and insertion sort, and analyzing their
   performance.
-content: tech
+content: python
 stage: "publish"
 date: 2017-05-20T02:02:55.984Z
 thumbnail: /images/uploads/python.png
