@@ -2,7 +2,7 @@
     <div class="section">
         <div class="columns" v-for="row in cards">
             <div class="column is-one-third" v-for="card in row">
-                <ContentListCardVue :content="card"/>
+                <ContentListCardVue :content="card" />
             </div>
         </div>
     </div>
@@ -10,6 +10,17 @@
 
 <script setup lang="ts">
 import ContentListCardVue, { CardContent } from '../components/ContentListCard.vue';
+
+useHead({
+    title: 'Ralph Dugue | Projects',
+    meta: [
+        {
+            hid: 'description',
+            name: 'description',
+            content: 'Projects by Ralph Dugue hosted on GitLab'
+        }
+    ]
+})
 
 interface GitLabData {
     name: string;

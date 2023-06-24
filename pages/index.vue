@@ -18,10 +18,10 @@
           </h2>
           <h2 class="subtitle block">
             Professionally, I have been a software engineer for over 10 years,
-            most of which has been spent working with Android. I also do web
-            development with this website made with Nuxt 3 and NetlifyCMS being
+            doing full-stack mobile and web development for small to medium, fast growing businesses.
+            I also do web development with this website made with Nuxt 3 and NetlifyCMS being
             one example. I enjoy working with Kotlin, Typescript, Python, and
-            hopefully Go soon.
+            hopefully Rust soon.
           </h2>
         </section>
         <section class="section">
@@ -56,25 +56,44 @@ interface Social {
   alt: string;
 }
 
+useHead({
+  title: "Ralph Dugue | About Me",
+  meta: [
+    {
+      name: "description",
+      content: "Ralph Dugue is a software engineer, and quadriplegic wheelchair user."
+    },
+    {
+      name: "keywords",
+      content: "ralph dugue, software engineer, disability, wheelchair user, android, kotlin, typescript, nuxt, netlifycms"
+    }
+  ]
+});
+
 const socials: Social[][] = [
   [
-    {
-      linkUrl: "https://gitlab.com/rdugue1",
-      imageUrl: "/img/socials/gitlab.png",
-      alt: "Visit my GitLab"
-    },
     {
       linkUrl: "https://www.linkedin.com/in/rdugue/",
       imageUrl: "/img/socials/linkedin.svg",
       alt: "Visit my LinkedIn"
     },
     {
-      linkUrl: "https://www.polywork.com/kingphito",
-      imageUrl: "/img/socials/polywork.svg",
-      alt: "Visit my Polywork page"
+      linkUrl: "https://www.fiverr.com/rdugue",
+      imageUrl: "/img/socials/fiverr.png",
+      alt: "Hire me on Fiverr"
+    },
+    {
+      linkUrl: "https://www.upwork.com/freelancers/~01b79e36d3fe1af584",
+      imageUrl: "/img/socials/upwork.svg",
+      alt: "Hire me on Upwork"
     },
   ],
   [
+    {
+      linkUrl: "https://gitlab.com/rdugue1",
+      imageUrl: "/img/socials/gitlab.png",
+      alt: "Visit my GitLab"
+    },
     {
       linkUrl: "https://www.twitch.tv/kingphito",
       imageUrl: "/img/socials/twitch.svg",
@@ -84,11 +103,6 @@ const socials: Social[][] = [
       linkUrl: "https://twitter.com/KingPhito",
       imageUrl: "/img/socials/twitter.svg",
       alt: "Vist my Twitter account"
-    },
-    {
-      linkUrl: "https://www.youtube.com/channel/UC9_SAi0OE5hp8X44A0HbWcw",
-      imageUrl: "/img/socials/youtube.png",
-      alt: "Vist my Youtube"
     },
   ],
 ];

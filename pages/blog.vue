@@ -31,6 +31,17 @@ import { reactive, computed } from 'vue'
 import ContentListCardVue, { CardContent } from '../components/ContentListCard.vue';
 import type { MarkdownParsedContent } from '@nuxt/content/dist/runtime/types'
 
+useHead({
+    title: 'Ralph Dugue | Blog',
+    meta: [
+        {
+            hid: 'description',
+            name: 'description',
+            content: 'Blog posts by Ralph Dugue'
+        }
+    ]
+})
+
 interface BlogCard extends MarkdownParsedContent {
     thumbnail: string;
     stage: string;
