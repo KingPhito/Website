@@ -8,9 +8,9 @@ date: 2023-08-16T02:30:48.265Z
 thumbnail: /images/uploads/android_robot.png
 ---
 # Introduction
-Jetpack Compose Has revolutionized away ui development is done with Android. Using the framework of Kotlin DSL, it provides a way for developers to develop state-driven UI in away that is intuitive and much simpler to work with than XML. The concept of recomposition however, comes with interesting challenges for handling application state. Recomposition can be unpredictable, and triggering changes to application state within composable functions can lead to unforeseen bugs if we do not have a strategy to account for that unpredictability. These changes to application state are called **side-effects**, and this is where the Effects APIs comes in. 
+Jetpack Compose has revolutionized away UI development is done in Android. Using the framework of Kotlin DSL, it provides a way for developers to build state-driven UI in away that is intuitive and much simpler to work with than XML. The concept of recomposition however, comes with interesting challenges for handling application state. Recomposition can be unpredictable, and triggering changes to application state within composable functions can lead to unforeseen bugs if we do not have a strategy to account for that unpredictability. These changes to application state are called **side-effects**, and this is where the Effects APIs comes in. 
 # Effects APIs
-The Effects APIs are the current recommended approach for ensuring side-effects execute in a predictable way. Essentially, **effects** are composable functions that do not emit a user interface, and instead handle a lot of the boilerplate needed to ensure our **side-effects** are handled in a predictable manner. There are three main functions provided to developers by the API to handle the different side-effects our composable functions can create:
+The Effects APIs are the current recommended approach for ensuring side-effects execute in a predictable way. Essentially, **effects** are composable functions that do not emit a user interface, and instead handle a lot of the boilerplate needed to ensure our **side-effects** are executed in a predictable manner. There are three main functions provided to developers by the API to handle the different side-effects our composable functions can create:
 ## LaunchedEffect
 `LaunchedEffect` Is an effect for when you need to call a suspended function from inside a composable. The most common use case for this will be when you need to handle displaying a `Snackbar` inside a Scaffold:
 ```kotlin
@@ -82,7 +82,7 @@ With every new value emitted to `updates`, a recomposition will be triggered and
 
 Note here that we are using `snapshotFlow` to convert a state object into a cold flow, and then running the update block as each value is collected.
 
-Another thing to note is the `currentonUpdate` function. When defining it, we are using `rememberUpdatedState` to make sure `DisposableEffect` is using the latest on update function with every recomposition, otherwise we would only get the latest update function whenever this composable is called with a new `updates` variable.
+Another thing to note is the `currentOnUpdate` function. When defining it, we are using `rememberUpdatedState` to make sure `DisposableEffect` is using the latest on update function with every recomposition, otherwise we would only get the latest update function whenever this composable is called with a new `updates` variable.
 ## SideEffect 
 `SideEffect` is an effect for when you need to share updates to Compose state with parts of our app that are not managed by Compose. A `SideEffect` is triggered after every recomposition. We can use it to implement a much more simplified version of the example from `DisposableEffect`:
 ```kotlin
@@ -96,7 +96,7 @@ fun Screen(updates: State<Int>, onUpdate: () -> Unit) {
 	}
 }
 ```
-Instead of collecting the state as flow, we rely on the `SideEffect` to run `onUpdate` every recomposition. This one is very straightforward compared to the other effects. And we could easily pass values from our state To our update block to be used anywhere that our app needs.
+This demonstrates how different effects can be used for similar goals, and how we might even be able to combine them to create custom effects. Instead of collecting the state as flow, we rely on the `SideEffect` to run `onUpdate` every recomposition. This one is very straightforward compared to the other effects., and we could easily pass values from our state to our update block to be used anywhere that our app needs.
 # Review 
 To conclude, here are some key terms to remember to understand how the effects api can help you manage application state when working with Jetpack compose:
 - **Effect**: A composable function that doesn't emit UI, but instead triggers side effects that run after a composition.
@@ -105,4 +105,4 @@ To conclude, here are some key terms to remember to understand how the effects a
 - **DisposableEffect**: An effect to be used when the side effect requires some cleanup work for the given keys.
 - **SideEffect**: An effect to be used to share composition updates With parts of our application that are outside the scope of Compose.
 
-Effects conceptually can be difficult to grasp at first . It takes a good understanding of recomposition and Kotlin coroutines to see the use cases. It is also important to remember that ideally, our composable functions should be side effect free. That is not always possible however, and the Effects APIs are another tool in the Compose toolbox we can pull out whenever is appropriate. [Check out the documentation]() for further reading. 
+Effects conceptually can be difficult to grasp at first. It requires a good understanding of recomposition and Kotlin coroutines to see the use cases. It is also important to remember that ideally, our composable functions should be side effect free. That is not always possible however, and the Effects APIs gives us another tool in the Compose toolbox we can pull out whenever is appropriate. [Check out the documentation]() for further reading. 
