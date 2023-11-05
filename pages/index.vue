@@ -36,7 +36,7 @@
     <div class="column is-four-fifths">
       <section class="section">
         <div class="columns" v-for="rows in socials">
-          <div class="column is-one-third" v-for="social in rows">
+          <div class="column is-half" v-for="social in rows">
             <a :href="social.linkUrl" class="box">
               <figure class="image is-3by3">
                 <img :src="social.imageUrl" :alt="social.alt" style="object-fit: cover;" />
@@ -78,22 +78,12 @@ const socials: Social[][] = [
       alt: "Visit my LinkedIn"
     },
     {
-      linkUrl: "https://www.fiverr.com/rdugue",
-      imageUrl: "/img/socials/fiverr.png",
-      alt: "Hire me on Fiverr"
-    },
-    {
-      linkUrl: "https://www.upwork.com/freelancers/~01b79e36d3fe1af584",
-      imageUrl: "/img/socials/upwork.svg",
-      alt: "Hire me on Upwork"
-    },
-  ],
-  [
-    {
       linkUrl: "https://gitlab.com/rdugue1",
       imageUrl: "/img/socials/gitlab.png",
       alt: "Visit my GitLab"
     },
+  ],
+  [
     {
       linkUrl: "https://www.twitch.tv/kingphito",
       imageUrl: "/img/socials/twitch.svg",

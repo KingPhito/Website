@@ -1,5 +1,6 @@
 <template>
-  <main class="container prose md:prose-lg lg:prose-xl">
+  <main
+    class="container prose md:prose-lg lg:prose-xl xl:prose-2xl prose-headings:underline prose-slate font-mono font-medium">
     <ContentDoc />
   </main>
 </template>

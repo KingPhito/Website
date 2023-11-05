@@ -12,7 +12,7 @@ export default defineNuxtConfig({
             viewport: 'width=500, initial-scale=1',
             title: 'Ralph | Software Engineer',
             meta: [
-                { name: 'description', content: 'My blog site.' }
+                { name: 'description', content: 'My is Ralph Dugue and I am a software engineer and tech content creator' }
             ],
         }
     },
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     content: {
         highlight: {
             theme: 'github-dark',
-            preload: ["python", "go"]
+            preload: ["python", "go", "kotlin"]
         }
     }
 })
