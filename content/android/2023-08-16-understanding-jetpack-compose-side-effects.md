@@ -1,14 +1,16 @@
 ---
 layout: blog
 title: "Understanding Jetpack Compose Side Effects "
-description: Side Effects are a new tool in Jetpack Compose that allow us to handle application state In a composable-aware way. This article goes in depth about the different Side Effects and their use cases.
+description: Side Effects are a new tool in Jetpack Compose that allow us to
+  handle application state In a composable-aware way. This article goes in depth
+  about the different Side Effects and their use cases.
 content: android
-stage: draft
-date: 2023-08-16T02:30:48.265Z
+stage: publish
+date: 2023-11-05T23:12:40.371Z
 thumbnail: /images/uploads/android_robot.png
 ---
 # Introduction
-Jetpack Compose has revolutionized away UI development is done in Android. Using the framework of Kotlin DSL, it provides a way for developers to build state-driven UI in away that is intuitive and much simpler to work with than XML. The concept of recomposition however, comes with interesting challenges for handling application state. Recomposition can be unpredictable, and triggering changes to application state within composable functions can lead to unforeseen bugs if we do not have a strategy to account for that unpredictability. These changes to application state are called **side-effects**, and this is where the Effects APIs comes in. 
+Jetpack Compose has revolutionized the way UI development is done in Android. Using the framework of Kotlin DSL, it provides a way for developers to build state-driven UI in away that is intuitive and much simpler to work with than XML. The concept of recomposition however, comes with interesting challenges for handling application state. Recomposition can be unpredictable, and triggering changes to application state within composable functions can lead to unforeseen bugs if we do not have a strategy to account for that unpredictability. These changes to application state are called **side-effects**, and this is where the Effects APIs comes in. 
 # Effects APIs
 The Effects APIs are the current recommended approach for ensuring side-effects execute in a predictable way. Essentially, **effects** are composable functions that do not emit a user interface, and instead handle a lot of the boilerplate needed to ensure our **side-effects** are executed in a predictable manner. There are three main functions provided to developers by the API to handle the different side-effects our composable functions can create:
 ## LaunchedEffect
