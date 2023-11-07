@@ -27,12 +27,11 @@ AppTheme {
         val state by viewModel.state.collectAsStateWithLifecycle()
 
 		if (state.hasError) {
-				LaunchedEffect(snackbarHostState) {
-					snackbarHostState.showSnackbar(
-		                message = "Error message",
-		                actionLabel = "Dismiss"
-		            )
-				}
+			LaunchedEffect(snackbarHostState) {
+				snackbarHostState.showSnackbar(
+					message = "Error message",
+					actionLabel = "Dismiss"
+				)
 			}
 		}
 		
