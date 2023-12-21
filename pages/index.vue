@@ -114,4 +114,10 @@ body {
     background-color: $secondary;
   }
 }
+
+.card-footer-item {
+  &:hover {
+    background-color: $secondary;
+  }
+}
 </style>
