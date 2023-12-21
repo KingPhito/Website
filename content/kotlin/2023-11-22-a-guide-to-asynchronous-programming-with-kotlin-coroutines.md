@@ -11,4 +11,8 @@ stage: draft
 date: 2023-11-22T01:31:29.425Z
 thumbnail: /images/uploads/kotlin.png
 ---
-.﻿.
+Asynchronous and reactive programming 
+- **Non-blocking execution**
+- **Observable objects**
+- **Structured concurrency**
+There are many libraries 

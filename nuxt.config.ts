@@ -3,16 +3,16 @@ export default defineNuxtConfig({
     ssr: true,
     runtimeConfig: {
         public: {
-            GITLAB_API_TOKEN: process.env.GITLAB_API_TOKEN
+
         }
     },
     app: {
         head: {
             charset: 'utf-16',
             viewport: 'width=500, initial-scale=1',
-            title: 'Ralph | Software Engineer',
+            title: 'Ralph Dugue | Software Engineer',
             meta: [
-                { name: 'description', content: 'My is Ralph Dugue and I am a software engineer and tech content creator' }
+                { name: 'description', content: 'My name is Ralph, and I am a software engineer and tech content creator.' }
             ],
         }
     },
@@ -30,6 +30,11 @@ export default defineNuxtConfig({
         highlight: {
             theme: 'github-dark',
             preload: ["python", "go", "kotlin"]
+        }
+    },
+    nitro: {
+        devServer: {
+            watch: ['./pages', './components']
         }
     }
 })

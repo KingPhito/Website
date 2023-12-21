@@ -6,12 +6,21 @@ $primary: #2e3090;
 $primary-light: findLightColor($primary);
 $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);
+$secondary: #FDB927;
+$secondary-light: findLightColor($secondary);
+$secondary-dark: findDarkColor($secondary);
+$secondary-invert: findColorInvert($secondary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
 
 // Lists and maps
 $custom-colors: null !default;
 $custom-shades: null !default;
+
+$card-background-color: $primary;
+$card-color: $white;
+$card-header-color: $white;
+$title-color: $secondary;
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: mergeColorMaps(("white": ($white,
@@ -60,9 +69,9 @@ $colors: mergeColorMaps(("white": ($white,
         $custom-colors);
 
 // Links
-$link: $primary;
-$link-invert: $primary-invert;
-$link-focus-border: $primary;
+$link: $secondary;
+$link-invert: $secondary-invert;
+$link-focus-border: $secondary;
 
 // Import Bulma and Oruga styles
 @import "../../node_modules/bulma/bulma.sass";

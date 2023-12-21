@@ -107,7 +107,6 @@ const filteredCards = computed((): CardContent[][] => {
     })
     temp.sort((a: CardContent, b: CardContent) => Date.parse(b.datetime) - Date.parse(a.datetime))
     while (temp.length) result.push(temp.splice(0, 3))
-
     return result
 })
 </script>
