@@ -140,8 +140,8 @@ Another case to consider is when we want a function or method to change the valu
 This is far from an exhaustive article on everything pointers. It is however enough to get started with. Here are some references on the topic that were helpful to me while writing this and learning in general:
 
 * [http://goinbigdata.com/golang-pass-by-pointer-vs-pass-by-value/](https://codewithyury.com/golang-pass-by-pointer-vs-pass-by-value/)
-* [https://www.golang-book.com/books/intro/8](<* https://www.golang-book.com/books/intro/8>)
-* [https://dave.cheney.net/2017/04/26/understand-go-pointers-in-less-than-800-words-or-your-money-back](<* https://dave.cheney.net/2017/04/26/understand-go-pointers-in-less-than-800-words-or-your-money-back>)
-* <https://www.ardanlabs.com/blog/2014/12/using-pointers-in-go.html>
+* [https://www.golang-book.com/books/intro/8](https://www.golang-book.com/books/intro/8)
+* [https://dave.cheney.net/2017/04/26/understand-go-pointers-in-less-than-800-words-or-your-money-back](https://dave.cheney.net/2017/04/26/understand-go-pointers-in-less-than-800-words-or-your-money-back)
+* [https://www.ardanlabs.com/blog/2014/12/using-pointers-in-go.html](https://www.ardanlabs.com/blog/2014/12/using-pointers-in-go.html)
 
 Per usual feel free to comment on the topic, or how I can make my content more friendly to newer coders or developers.

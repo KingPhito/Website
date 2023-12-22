@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    ssr: true,
+    ssr: false,
     runtimeConfig: {
         public: {
 
@@ -33,11 +33,9 @@ export default defineNuxtConfig({
         highlight: {
             theme: 'github-dark',
             preload: ["python", "go", "kotlin"]
-        }
-    },
-    nitro: {
-        devServer: {
-            watch: ['./pages/*', './components/*', './layouts/*', './assets/css/*']
+        },
+        experimental: {
+            clientDB: true,
         }
     }
 })
