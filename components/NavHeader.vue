@@ -5,7 +5,7 @@
         <NuxtLink to="/" class="navbar-item">
           <img src="~/assets/images/icon.png" alt="My Logo, also links to home page" />
           <h1 class="title is-4">&nbsp;Ralph Dugue <br />
-            <h4 class="subtitle is-6">&nbsp;Software Engineer</h4>
+            <h4 class="subtitle is-6">&nbsp;&nbsp;Software Engineer</h4>
           </h1>
         </NuxtLink>
       </div>

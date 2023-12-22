@@ -9,8 +9,11 @@ export default defineNuxtConfig({
     app: {
         head: {
             charset: 'utf-16',
-            viewport: 'width=500, initial-scale=1',
+            viewport: 'width=device-width, initial-scale=1',
             title: 'Ralph Dugue | Software Engineer',
+            link: [
+                { rel: 'icon', type: 'image/x-icon', href: '_nuxt/assets/images/favicon.ico' }
+            ],
             meta: [
                 { name: 'description', content: 'My name is Ralph, and I am a software engineer and tech content creator.' }
             ],
@@ -34,7 +37,7 @@ export default defineNuxtConfig({
     },
     nitro: {
         devServer: {
-            watch: ['./pages', './components']
+            watch: ['./pages/*', './components/*', './layouts/*', './assets/css/*']
         }
     }
 })

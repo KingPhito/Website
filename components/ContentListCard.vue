@@ -22,15 +22,7 @@
 
 <script setup lang="ts">
 import { format } from 'date-fns'
-
-export interface CardContent {
-  title: 'Default Title',
-  thumbnail: '/img/profile',
-  description: 'Emty description.',
-  datetime: 'Now...',
-  path: '/',
-  content: string,
-}
+import type { CardContent } from '~/types'
 
 const props = defineProps<{ content: CardContent }>()
 </script>

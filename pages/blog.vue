@@ -28,7 +28,8 @@
 
 <script setup lang="ts">
 import { reactive, computed } from 'vue'
-import ContentListCardVue, { CardContent } from '../components/ContentListCard.vue';
+import ContentListCardVue from '~~/components/ContentListCard.vue'
+import type { CardContent } from '~/types'
 import type { MarkdownParsedContent } from '@nuxt/content/dist/runtime/types'
 
 useHead({

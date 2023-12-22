@@ -9,7 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import ContentListCardVue, { CardContent } from '../components/ContentListCard.vue';
+import ContentListCardVue from '~~/components/ContentListCard.vue';
+import type { CardContent } from '~/types';
 
 useHead({
     title: 'Ralph Dugue | Projects',
