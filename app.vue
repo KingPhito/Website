@@ -1,5 +1,6 @@
 <template>
   <NavHeader />
+
   <body>
     <Suspense>
       <NuxtPage />
@@ -7,3 +8,9 @@
     </Suspense>
   </body>
 </template>
+
+<style lang="scss">
+html {
+  overflow: auto;
+}
+</style>
