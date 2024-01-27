@@ -1,11 +1,7 @@
 ---
 layout: blog
-title: A Guide to Asynchronous Programming with Kotlin Coroutines
-description: As a software developer, asynchronous and reactive programming are
-  cornerstones of building efficient applications. This blog post goes over the
-  core concepts of asynchronous programming, and how the Kotlin Coroutines
-  library provides us with tools to simplify asynchronous programming in our
-  applications.
+title: A Guide to Asynchronous Programming with Kotlin Coroutines Part 1
+description: As a software developer, asynchronous and reactive programming are cornerstones of building efficient applications. This blog post goes over the core concepts of asynchronous programming, and how the Kotlin Coroutines library provides us with tools to simplify asynchronous programming in our applications.
 content: kotlin
 stage: draft
 date: 2023-11-22T01:31:29.425Z
@@ -25,3 +21,12 @@ Asynchronous programming patterns are the cornerstones of modern software develo
 
 These are the basic concepts to asynchronous programming . There are many libraries across several programming languages that have different approaches for implementing these patterns. Let's explore the tools in Kotlin coroutines library that enable us to write efficient and clean asynchronous logic.
 # What are Coroutines?
+Coroutines are the Kotlin approach to structured concurrency. At their core, coroutines are blocks of codes that allow for **suspendable computation**. This means that we can write blocking code inside of coroutines using what are called **suspend functions**. Suspend functions can block the coroutine they were called in until they finish execution.
+
+Coroutines work in a very similar way to threads however, but are much more lightweight. 
+
+## Scopes
+## Dispatchers
+## Jobs / Deferred 
+
+# What's Next?
