@@ -8,25 +8,87 @@ date: 2023-11-22T01:31:29.425Z
 thumbnail: /images/uploads/kotlin.png
 ---
 # Introduction: Asynchronous Programming Basics 
-Asynchronous programming patterns are the cornerstones of modern software development. These patterns have been implemented across  virtually every modern programming language, and are fundamental to enabling developers to build efficient and maintainable software. This article will go over the core concepts behind asynchronous and reactive programming, and how Kotlin developers can utilize the coroutines library to write clean a synchronous code!! Let's start by delving into exactly what we mean by asynchronous and reactive programming:
+Asynchronous programming patterns are the cornerstones of modern software development. These patterns have been implemented across  virtually every modern programming language, and are fundamental to enabling developers to build efficient and maintainable software. This article will go over the core concepts behind asynchronous and reactive programming, and how Kotlin developers can utilize the coroutines library to write clean a synchronous code!! Let's start by delving into exactly what we mean by asynchronous programming:
 
-- **Non-blocking execution** - This concept refers to how different tasks in software executes. It simply means that Long running or system intensive tasks should not block the execution of the main application logic. A very standard example of this is when dealing with an application that requires retrieving information from an API or backend service . Commonly when performing this task, the user needs to be notified somehow that the application is doing work to retrieve some information; typically this can be achieved with some form of loading screen or indicator. Point being, the task to make a request to the back end service should not block the operation that updates the user interface with a loading indicator(hence the term non-blocking). 
-- **Concurrency** - Non blocking execution enables concurrency. This refers to the ability to manage multiple tasks seemingly at the same time. To continue with our above example, because our task to retrieve information from the API is not blocking the task that updates the user interface, these two tasks can be said to be running concurrently. And these two tasks will continue to run concurrently until the necessary data is retrieved from the api, and the UI is subsequently updated with that data. This third task would happen in some form of a callback function associated with the API task.
+- **Non-blocking execution** - In software development, this refers to the practice of writing code that does not block the execution of subsequent code.  A very standard example of this is when dealing with an application that requires retrieving information from an API or backend service . Commonly when performing this task, the user needs to be notified somehow that the application is doing work to retrieve some information; this can be achieved with some form of loading screen or indicator. Point being, the task to make a request to the back end service should not block the operation that updates the user interface with a loading indicator(hence the term non-blocking). 
+- **Concurrency** - This refers to the ability to manage multiple tasks over a period of time. To continue with our above example, we have a task to retrieve data from an API and a task to set a loading state for our UI. Let's now add a task to update the UI once we receive a response from the API request. Because of how they depend on each other, we can group them together and say these three are concurrent tasks. Non-blocking execution is used to enable concurrency,  which is needed to effectively manage **asynchronous tasks**. These are long running or system intensive tasks that can have unpredictable execution times. In the case of our example, this would apply to the API request task since it requires networking. 
 	
-	It's important to note that concurrency can take many forms. Single-threaded languages (like Javascript)  can model concurrency by keeping track of system intensive or long running tasks in some kind of queue. In this model when a task is completed, the program notifies the system that the dependent code for this task is ready to execute. We call these tasks **asynchronous**, because the system running the code does not necessarily execute it sequentially. Continuing with our above example again, while the API task code and subsequently the UI update task code would be written before the loading screen task code, the latter would execute first since it is not an asynchronous task.
+	It's important to note that concurrency can take many forms. JavaScript being a single-threaded languages for example, models concurrency by keeping track of asynchronous tasks in a queue. In this model when an asynchronous task is completed, the program notifies the system that the dependent code for this task is ready to execute.  
 
-	Some programming languages on the other hand, allow for multithreading (like Java for example) and you will see that used to achieve concurrency. A thread that is typically referred to as the "main" or "UI" thread will be reserved for the user interface or whatever the main task of the application is, while other threads are used for asynchronous tasks. A multithreaded model for concurrency is called **parallelism**. 
+	Some programming languages on the other hand, allow for multithreading (like Java for example) and you will see that used to achieve concurrency. In this approach, new threads can be created to run asynchronous tasks at the same time as synchronous tasks. A multithreaded approach to concurrency is called **parallelism**. 
+- **Structured Concurrency** - This is a newer paradigm shift that aims to make concurrent code more readable and testable. Implementing concurrency in non-trivial projects can quickly become very cryptic and difficult to manage, because they involve structures like callbacks and function chains that make it difficult to do things like add conditional logic or error handling. Structured concurrency is about organizing concurrent tasks in logical sequential steps. This allows us to use well established programming constructs like loops, conditional statements, and try-catch blocks with asynchronous tasks.
 - **Observability** - For asynchronous tasks we need to know if and when they complete, so that we can use that information to update our application accordingly. Observability is one of the ways we achieve this. There are several patterns that are used to achieve observability, including the observer pattern, the publish-subscribe pattern, and the callback pattern. These patterns all differently slightly and have specific use cases, But the main concept behind them all is to create a functional block of space to handle the results of asynchronous tasks.
-- **Structured Concurrency** - This is a different approach to handling concurrent programming. Structured concurrency is about taking concurrent tasks, and grouping them in logical sequential steps. Structured concurrency for example, would allow us to take the loading screen task, the API task, and the UI update task, and arrange them sequentially in that order in our code. This is a newer paradigm shift that often makes asynchronous code more readable and testable. 
 
 These are the basic concepts to asynchronous programming . There are many libraries across several programming languages that have different approaches for implementing these patterns. Let's explore the tools in Kotlin coroutines library that enable us to write efficient and clean asynchronous logic.
 # What are Coroutines?
-Coroutines are the Kotlin approach to structured concurrency. At their core, coroutines are blocks of codes that allow for **suspendable computation**. This means that we can write blocking code inside of coroutines using what are called **suspend functions**. Suspend functions can block the coroutine they were called in until they finish execution.
+Coroutines follow the Kotlin principle of taking Java best practices and reducing the boilerplate needed to implement them. Under the hood they make efficient use of thread pools to enable concurrency. At their core, coroutines are functional code blocks that allow for **suspendable computation**. This means that we can write blocking code inside a coroutine using what is called a **suspend function**; they work by suspending the coroutine, while allowing other coroutines to continue execution. Suspend functions are what we use for asynchronous tasks, and coroutines are how we achieve structured concurrency with related tasks. Let's go over some key components in the coroutine framework to help us understand how they work.
+### CoroutineScope
+CoroutineScope is an interface for representing the scope within which a coroutine will execute. Meaning that if a scope is terminated or canceled for whatever reason, all coroutines within it will also be canceled. They also give us access to their associated coroutine context property.
+### Coroutine Builders 
+Coroutine builders are the functions that we use to create coroutine blocks. They are structured with a trailing suspend function parameter by convention, which we use to pass the logic we want the coroutine to execute. There are three main coroutine builders:
+- **runBlocking** - This is the builder that we use to bridge the blocking world with the suspendable world of coroutines. This will typically be found in main functions or testing functions, and is the only builder that is not an extension function of the CoroutineScope interface.
+- **launch** - This is the standard builder for launching a core routine in the current thread. The launch function returns what is known as a **Job**. A reference to this object can be used to cancel the coroutine or wait for it to complete.
+- **async** - 
+### CoroutineContext
 
-Coroutines work in a very similar way to threads however, but are much more lightweight. 
+### Dispatchers
 
-## Scopes
-## Dispatchers
-## Jobs / Deferred 
+Let's finally look at some code:
+```kotlin
+fun main() = runBlocking {
+	launch {
+		val data = getAPIData()
+		updateUI(data)
+	}
+	setLoadingState()
+}
+
+suspend fun getAPIData(): Data {
+	/* some network code */
+}
+
+fun setLoadingState() {
+	/* some UI code */
+}
+
+fun updateUI(data: Data) {
+	/* some UI code */
+}
+```
+Here we have an implementation from our asynchronous programming example from earlier. We are using coroutine builders **runBlocking** and **launch** to nest one coroutine inside another. The coroutine created with the launch builder has the API suspend function call, which will cause it to suspend. This does not however suspend the outer coroutine, created with the runBlocking builder. This way the loading state function executes first.
+
+Coroutines work in a very similar way to threads, but are much more lightweight. So lightweight in fact that several coroutines can be spawned and managed within a single thread. When a coroutine suspends, the thread it is working on remains free for other coroutines to continue execution. When the suspended function finishes whatever work it was doing, the coroutine is scheduled back onto a thread to continue execution. This gives us the possibility of parallelism without multi-threading. Let's say for example we needed to make two separate api calls:
+```kotlin
+fun main() = runBlocking {
+	launch(Dispatchers.IO) {
+		val data = getAPIData()
+		updateUI(data.first, data.second)
+	}
+	setLoadingState()
+}
+
+suspend fun getAPIData(): Pair<Data> = coroutineScope {
+	val a = async { apiCallA() }
+	val b = async { apiCallB() }
+	Pair(a.await(), b.await())
+}
+
+suspend fun apiCallA(): Data {
+	/* some network code */
+}
+
+suspend fun apiCallB(): Data {
+	/* some network code */
+}
+
+fun setLoadingState() {
+	/* some UI code */
+}
+
+fun updateUI(dataA: Data, dataB:) {
+	/* some UI code */
+}
+```
+There's a little more happening here. We've updated the suspend function to now make two separate api calls in parallel with the **async builder**. This is a common pattern for handling multiple unrelated system intensive tasks. We're also using the coroutine scope builder, which is available inside all suspend functions for launching code routines. Finally, we're making use of the **IO dispatcher** to do this work in a thread pool reserved for IO operations.
 
 # What's Next?
