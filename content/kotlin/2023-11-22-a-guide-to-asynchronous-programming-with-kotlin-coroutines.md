@@ -27,13 +27,18 @@ CoroutineScope is an interface for representing the scope within which a corouti
 ### Coroutine Builders 
 Coroutine builders are the functions that we use to create coroutine blocks. They are structured with a trailing suspend function parameter by convention, which we use to pass the logic we want the coroutine to execute. There are three main coroutine builders:
 - **runBlocking** - This is the builder that we use to bridge the blocking world with the suspendable world of coroutines. This will typically be found in main functions or testing functions, and is the only builder that is not an extension function of the CoroutineScope interface.
-- **launch** - This is the standard builder for launching a core routine in the current thread. The launch function returns what is known as a **Job**. A reference to this object can be used to cancel the coroutine or wait for it to complete.
-- **async** - 
+- **launch** - This is the standard builder for launching a core routine in the current thread. The launch function returns a **Job**. A reference to this job can be used to cancel the coroutine or wait for it to complete.
+- **async** - This builder is similar to launch except that it returns a **Deferred**, which is a job that also holds a value. So if we need to return a value when the coroutine finishes execution, this is what we would use.
 ### CoroutineContext
-
+A CoroutineContext is an indexed set of elements used to represent the persistent state of a coroutine. It holds a reference to the dispatcher, the job, and a variable amount of elements that we can specify when building the coroutine.
 ### Dispatchers
+Dispatchers manage the thread or thread pools that coroutines execute on. The dispatcher can be specified as part of the coroutine context, and there are few different dispatchers to choose from based on what the coroutine is trying to accomplish:
+- **Default** - This is the dispatcher that is used by all standard builders if none is specified. It uses a thread pool reserved for cpu intensive tasks.
+- **IO** - This dispatcher uses a thread pool reserved for file io, and networking tasks.
+- **Unconfined** - This dispatcher does not confine the coroutine to any specific thread pool. So while it is launched in the current thread, said co-routine can resume its work on any available thread.
+- **Main** - This is a special dispatcher that is typically available in frameworks like Android or Swing, where there is a main thread reserved for user interface related tasks.
 
-Let's finally look at some code:
+Now that we have a solid understanding of how coroutines work,  let's finally look at some code:
 ```kotlin
 fun main() = runBlocking {
 	launch {
@@ -55,7 +60,7 @@ fun updateUI(data: Data) {
 	/* some UI code */
 }
 ```
-Here we have an implementation from our asynchronous programming example from earlier. We are using coroutine builders **runBlocking** and **launch** to nest one coroutine inside another. The coroutine created with the launch builder has the API suspend function call, which will cause it to suspend. This does not however suspend the outer coroutine, created with the runBlocking builder. This way the loading state function executes first.
+Here we have an implementation from our asynchronous programming example from earlier. We are using coroutine builders **runBlocking** and **launch** to nest one coroutine inside another. The coroutine created with the `launch` builder has the API suspend function call, which will cause it to suspend. This does not however suspend the outer coroutine, created with the `runBlocking` builder. This way the loading state function executes first.
 
 Coroutines work in a very similar way to threads, but are much more lightweight. So lightweight in fact that several coroutines can be spawned and managed within a single thread. When a coroutine suspends, the thread it is working on remains free for other coroutines to continue execution. When the suspended function finishes whatever work it was doing, the coroutine is scheduled back onto a thread to continue execution. This gives us the possibility of parallelism without multi-threading. Let's say for example we needed to make two separate api calls:
 ```kotlin
@@ -89,6 +94,8 @@ fun updateUI(dataA: Data, dataB:) {
 	/* some UI code */
 }
 ```
-There's a little more happening here. We've updated the suspend function to now make two separate api calls in parallel with the **async builder**. This is a common pattern for handling multiple unrelated system intensive tasks. We're also using the coroutine scope builder, which is available inside all suspend functions for launching code routines. Finally, we're making use of the **IO dispatcher** to do this work in a thread pool reserved for IO operations.
+There's a little more happening here. We've updated the suspend function to now make two separate api calls in parallel with the `async` builder. This is a common pattern for handling multiple unrelated system intensive tasks. We return a pair of values from the api calls by calling the `await` function on each deferred result respectively. We're also using the `coroutineScope` builder, which is available inside all suspend functions for launching code routines. Finally, we're making use of the **IO dispatcher** to do this work in a thread pool reserved for IO operations.
 
+That's all there is to it! Understanding these principles, we should be ready to use coroutines responsibly for our asynchronous needs. If you need additional guidance, the [official Kotlin documentation](https://kotlinlang.org/docs/coroutines-guide.html) on coroutines is very well written and provides many great examples.
 # What's Next?
+We didn't get a chance to explore observability in this Blog post. In part two of this series we are going to look at channels and asynchronous flows, and how they can be used to subscribe to streams of data.
