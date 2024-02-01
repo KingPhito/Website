@@ -1,25 +1,22 @@
 ---
 layout: blog
 title: A Guide to Asynchronous Programming with Kotlin Coroutines Part 1
-description: As a software developer, asynchronous programming is key to
-  building efficient applications. This blog post goes over the core concepts of
-  asynchronous programming, and how the Kotlin Coroutines library provides us
-  with tools to simplify asynchronous programming in our applications.
+description: As a software developer, asynchronous programming is key to building efficient applications. This blog post goes over the core concepts of asynchronous programming, and how the Kotlin Coroutines library provides us with tools to simplify asynchronous programming in our applications.
 content: kotlin
-stage: draft
+stage: publish
 date: 2023-11-22T01:31:29.425Z
 thumbnail: /images/uploads/kotlin.png
 ---
 # Introduction: Asynchronous Programming Basics
 
-Asynchronous programming patterns are the cornerstones of modern software development. These patterns have been implemented across  virtually every modern programming language, and are fundamental to enabling developers to build efficient and maintainable software. This article will go over the core concepts behind asynchronous and reactive programming, and how Kotlin developers can utilize the coroutines library to write clean a synchronous code!! Let's start by delving into exactly what we mean by asynchronous programming:
+Asynchronous programming patterns are the cornerstones of modern software development. These patterns have been implemented across  virtually every modern programming language, and are fundamental to enabling developers to build efficient and maintainable software. This blog series will go over the core concepts behind asynchronous programming, and how Kotlin developers can utilize the coroutines library to write clean asynchronous code! Let's start by delving into exactly what we mean by asynchronous programming:
 
 * **Non-blocking execution** - In software development, this refers to the practice of writing code that does not block the execution of subsequent code.  A very standard example of this is when dealing with an application that requires retrieving information from an API or backend service . Commonly when performing this task, the user needs to be notified somehow that the application is doing work to retrieve some information; this can be achieved with some form of loading screen or indicator. Point being, the task to make a request to the back end service should not block the operation that updates the user interface with a loading indicator(hence the term non-blocking). 
 * **Concurrency** - This refers to the ability to manage multiple tasks over a period of time. To continue with our above example, we have a task to retrieve data from an API and a task to set a loading state for our UI. Let's now add a task to update the UI once we receive a response from the API request. Because of how they depend on each other, we can group them together and say these three are concurrent tasks. Non-blocking execution is used to enable concurrency,  which is needed to effectively manage **asynchronous tasks**. These are long running or system intensive tasks that can have unpredictable execution times. In the case of our example, this would apply to the API request task since it requires networking. 
 
   It's important to note that concurrency can take many forms. JavaScript being a single-threaded languages for example, models concurrency by keeping track of asynchronous tasks in a queue. In this model when an asynchronous task is completed, the program notifies the system that the dependent code for this task is ready to execute. 
 
-  Some programming languages on the other hand, allow for multithreading (like Java for example) and you will see that used to achieve concurrency. In this approach, new threads can be created to run asynchronous tasks at the same time as synchronous tasks. A multithreaded approach to concurrency is called **parallelism**. 
+  Some programming languages on the other hand, allow for multithreading (like Java for example) and you will see that used to achieve concurrency. In this approach, new threads can be created to run asynchronous tasks at the same time as synchronous tasks. Multiple tasks executing at the same time is called **parallelism**. 
 * **Structured Concurrency** - This is a newer paradigm shift that aims to make concurrent code more readable and testable. Implementing concurrency in non-trivial projects can quickly become very cryptic and difficult to manage, because they involve structures like callbacks and function chains that make it difficult to do things like add conditional logic or error handling. Structured concurrency is about organizing concurrent tasks in logical sequential steps. This allows us to use well established programming constructs like loops, conditional statements, and try-catch blocks with asynchronous tasks.
 * **Observability** - For asynchronous tasks we need to know if and when they complete, so that we can use that information to update our application accordingly. Observability is one of the ways we achieve this. There are several patterns that are used to achieve observability, including the observer pattern, the publish-subscribe pattern, and the callback pattern. These patterns all differently slightly and have specific use cases, But the main concept behind them all is to create a functional block of space to handle the results of asynchronous tasks.
 
@@ -65,20 +62,23 @@ fun main() = runBlocking {
 	setLoadingState()
 }
 
+data class Data(payload: String)
+
 suspend fun getAPIData(): Data {
-	/* some network code */
+	delay(1500L)
+	return Data("payload")
 }
 
 fun setLoadingState() {
-	/* some UI code */
+	println("Loading...")
 }
 
 fun updateUI(data: Data) {
-	/* some UI code */
+	println(data.payload)
 }
 ```
 
-Here we have an implementation from our asynchronous programming example from earlier. We are using coroutine builders `runBlocking` and `launch` to nest one coroutine inside another. The coroutine created with the `launch` builder has the API suspend function call, which will cause it to suspend. This does not however suspend the outer coroutine, created with the `runBlocking` builder. This way the loading state function executes first.
+Here we have an implementation from our asynchronous programming example from earlier. We are using coroutine builders `runBlocking` and `launch` to nest one coroutine inside another. The coroutine created with the `launch` builder has the API suspend function call, which will cause it to suspend. For the purpose of these examples we're using `delay`, which is a suspend function That suspends a coroutine for a set amount of time, to simulate waiting for a network response. This does not however suspend the outer coroutine, created with the `runBlocking` builder. This way the loading state function executes first.
 
 Coroutines work in a very similar way to threads, but are much more lightweight. So lightweight in fact that several coroutines can be spawned and managed within a single thread. When a coroutine suspends, the thread it is working on remains free for other coroutines to continue execution. When the suspended function finishes whatever work it was doing, the coroutine is scheduled back onto a thread to continue execution. This gives us the possibility of parallelism without multi-threading. Let's say for example we needed to make two separate api calls:
 
@@ -91,6 +91,8 @@ fun main() = runBlocking {
 	setLoadingState()
 }
 
+data class Data(payload: String)
+
 suspend fun getAPIData(): Pair<Data> = coroutineScope {
 	val a = async { apiCallA() }
 	val b = async { apiCallB() }
@@ -98,19 +100,21 @@ suspend fun getAPIData(): Pair<Data> = coroutineScope {
 }
 
 suspend fun apiCallA(): Data {
-	/* some network code */
+	delay(1500L)
+	return Data("payloadA")
 }
 
 suspend fun apiCallB(): Data {
-	/* some network code */
+	delay(2000L)
+	return Data("payloadB")
 }
 
 fun setLoadingState() {
-	/* some UI code */
+	println("Loading...")
 }
 
-fun updateUI(dataA: Data, dataB:) {
-	/* some UI code */
+fun updateUI(dataA: Data, dataB: Data) {
+	println("${dataA.payload - dataB.payload}")
 }
 ```
 
