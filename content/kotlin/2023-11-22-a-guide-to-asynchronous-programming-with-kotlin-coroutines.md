@@ -24,7 +24,7 @@ These are the basic concepts to asynchronous programming . There are many librar
 
 # What are Coroutines?
 
-Coroutines follow the Kotlin principle of taking Java best practices and reducing the boilerplate needed to implement them. Under the hood they make efficient use of thread pools to enable concurrency. At their core, coroutines are functional code blocks that allow for **suspendable computation**. This means that we can write blocking code inside a coroutine using what is called a **suspend function**; they work by suspending the coroutine, while allowing other coroutines to continue execution. Suspend functions are what we use for asynchronous tasks, and coroutines are how we achieve structured concurrency with related tasks. Let's go over some key components in the coroutine framework to help us understand how they work.
+At their core, coroutines are functional code blocks that allow for **suspendable computation**. This means that we can write blocking code inside a coroutine using what is called a **suspend function**; they work by suspending the coroutine, while allowing other coroutines to continue execution. Suspend functions are what we use for asynchronous tasks, and coroutines are how we achieve structured concurrency with related tasks. Under the hood, they make efficient use of thread pools to enable that concurrency. Let's go over some key components in the coroutine framework to help us understand how they work.
 
 ### CoroutineScope
 
@@ -32,11 +32,12 @@ CoroutineScope is an interface for representing the scope within which a corouti
 
 ### Coroutine Builders
 
-Coroutine builders are the functions that we use to create coroutine blocks. They are structured with a trailing suspend function parameter by convention, which we use to pass the logic we want the coroutine to execute. There are three main coroutine builders:
+Coroutine builders are the functions that we use to create coroutine blocks. They are structured with a trailing suspend function parameter by convention, which we use to pass the logic we want the coroutine to execute. There are four main coroutine builders:
 
 * **runBlocking** - This is the builder that we use to bridge the blocking world with the suspendable world of coroutines. This will typically be found in main functions or testing functions, and is the only builder that is not an extension function of the CoroutineScope interface.
 * **launch** - This is the standard builder for launching a core routine in the current thread. The launch function returns a **Job**. A reference to this job can be used to cancel the coroutine or wait for it to complete.
 * **async** - This builder is similar to launch except that it returns a **Deferred**, which is a job that also holds a value. So if we need to return a value when the coroutine finishes execution, this is what we would use.
+* **coroutineScope** - This builder can be used inside any suspend function. It creates a new coroutine scope that will complete once all the jobs launched inside it complete or cancel.
 
 ### CoroutineContext
 
