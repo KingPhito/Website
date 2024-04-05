@@ -17,16 +17,14 @@
           <div class="content">
             I'm Ralph. I am a quadriplegic wheelchair user, videogame nerd,
             basketball nerd, and slowly becoming a chess nerd 😀. This website is
-            my attempt at documenting all the things I'm working on. I have more
-            passions than time but at least I can keep track of them!
+            my attempt at documenting all the things I'm working on. I try to write about
+            the things I'm learning, the things I'm building, and the things I'm thinking about.
             <br />
             <br />
             Professionally, I have been a software engineer for over 10 years,
             doing full-stack mobile and web development for small to medium, fast growing businesses.
-            I also do web development with this website made with Nuxt 3 and NetlifyCMS being
-            one example. I'm passionate about building clean scratch that accessible, clean, and intuitive user
-            experiences. I enjoy working with Kotlin, Typescript, Python, and
-            hopefully Rust soon.
+            I enjoy working with Kotlin, Typescript, Python, and hopefully Rust soon. I am also acquiring
+            machine learning skills, and I am excited to see how I can apply them to my projects.
             <br />
             <br />
           </div>
@@ -97,7 +95,7 @@ const socials: Social[] = [
 ];
 </script>
 
-<style  scoped lang="scss">
+<style scoped lang="scss">
 @import "../assets/css/main.scss";
 
 html,
