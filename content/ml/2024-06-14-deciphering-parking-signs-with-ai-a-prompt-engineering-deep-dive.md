@@ -29,34 +29,37 @@ Interpreting parking signs can be tricky due to:
 * Ambiguity: Regulations can vary widely depending on the time, day, or vehicle type.
 * Accessibility: Individuals with visual impairments might face challenges accessing the information.
 
-Our Solution: A Purpose-Built Prompt
+What if we could offload all that analysis to our favorite generative AI model(in the case of Can I Park, I am using [Google's Gemini API](https://ai.google.dev/)), and it could quickly tell us whether we can park in this location? This is the crux of how Can I Park works, once the user takes a picture of the sign or groups of signs.
 
-To address these challenges, we designed a prompt that:
+With this objective in mind, I designed a prompt that:
 
 * Requests Specific Information: It asks the AI model to extract key details like whether parking is allowed, time limits, costs, and any restrictions.
-* Specifies Output Format: The prompt requires the model to respond in a clear, structured JSON format.
+* Provides relevant information: It gives the AI The current time based on the user's location, so that it can reason about if the user can park at that very moment.
+* Specifies Output Format: The prompt requires the model to respond in a clear, structured JSON format. 
 * Includes Examples: It provides examples of valid and invalid parking scenarios to guide the model's understanding.
 * Handles Errors: The prompt instructs the model to give a specific response when it cannot interpret the image.
 
-
-
+Here is the current version of the prompt:
 ```kotlin
 private fun formatPrompt(): String {
 	return """
-		It is currently ${getCurrentSystemTime()}. Tell me if I can park here right now based on 
-		that information and the image provided, if it is a valid image of parking signs.
-		If I can park, how long can I park? If there is no time limit, this field should be null.
-		If there is a cost, how much does it cost? If no cost, this field should be null.
-		Are there any restrictions? If there are no restrictions, this field should be null.
-		If I can't park, why not? If I can park, this field should be null.
-		Please only respond in JSON format based on the following schema and examples:
+		It is currently ${getCurrentSystemTime()}. Tell me if I can park here
+		right now based on the current time and the image provided, if it is
+		a valid image of parking signs. If I can park, how long can I park? 
+		If there is no time limit, this field should be null.If there is a
+		cost, how much does it cost? If no cost, this field should be null.
+		Are there any restrictions? If there are no restrictions, this field
+		should be null. If I can't park, why not? If I can park, this field 
+		should be null.Please only respond in JSON format based on the 
+		following schema and examples:
 		{
 			"title": "Parking Response",
 			"type": "object",
 			"properties": {
 				"canIPark": {
 					"type": "boolean",
-					"description": "Whether or not the user can park at the location"
+					"description": "Whether or not the user can park at 
+					the location"
 				},
 				"howLong": {
 					"type": "string",
@@ -68,7 +71,8 @@ private fun formatPrompt(): String {
 				},
 				"reasonIfNo": {
 					"type": "string",
-					"description": "The reason the user cannot park at the location"
+					"description": "The reason the user cannot park at 
+					the location"
 				},
 				"restrictions": {
 					"type": "string",
@@ -92,36 +96,30 @@ private fun formatPrompt(): String {
 			"restrictions": null
 		}.
 		If the image provided is not a valid image of parking signs,
-		respond in the format with the "reasonIfNo" being "This is not a valid image for analysis".
+		respond in the format with the "reasonIfNo" being "This is not a 
+		valid image for analysis".
 		Do not include the schema in your response.
 	""".trimIndent()
 }
 ```
 
-# How This Prompt Works
+# Rationale
 
-By providing a clear and structured prompt, we guide the AI model to focus on the relevant information and present it in a way that's easy for humans or other applications to understand and use.
+By providing a clear and structured prompt, we guide the AI model to focus on the relevant information and present it in a way that's easy for humans or other applications to understand and use. The JSON structure allows us to parse the response into the desired business logic object Of our application. For example the Field allowed for me to customize UI elements based on whether the user can park or not.
 
-Applications
-
-This prompt could be used to develop a mobile app that:
-
-* Takes a picture of a parking sign
-* Uses the prompt to extract parking information
+This is the prompt engineering powering Can I Park. Now the user has a three step process for getting what they need:
+* They take a picture of a parking sign
+* Briefly wait as the app extracts and analyzes the relevant information
 * Presents the information in a clear and accessible format, including text-to-speech for visually impaired users.
 
-Conclusion
+The app is available in the [Google Play Store](https://play.google.com/store/apps/details?id=com.dugue.canipark&pcampaignid=web_share), and the full source code is available on [Github](https://github.com/KingPhito/Can-I-Park). I appreciate you checking the time to check it out! You can also try out the prompt and Google AI Studio With varying images to see what results you get.
+# Conclusion
 
-Prompt engineering is a powerful tool for unlocking the potential of AI models. By carefully crafting prompts, we can create applications that solve real-world problems and improve our lives.
+Prompt engineering is a powerful tool for unlocking the potential of AI models. By carefully crafting prompts, we can create applications that solve real-world problems and improve our lives. In the coming years this could very well revolutionize how we as engineers interface with the different layers of the systems we build. One example of this would be the emerging development of AI agents to interface with database layers, allowing us to query data with natural language. Tools like these will be immense productivity boosters, and an example of why prompt engineering is becoming an invaluable skill.
 
-The parking sign interpretation prompt is just one example of how AI can be used to make information more accessible and easier to understand. We're excited about the possibilities of prompt engineering and look forward to exploring other ways to leverage AI for the benefit of society.
+The parking sign interpretation prompt is relatively simple use case for how AI can be used to make information more accessible and easier to understand. I'm excited about the possibilities of prompt engineering and look forward to exploring other ways to leverage AI for the benefit of society.
 
-Call to Action:
 
-* Try out the prompt yourself! Share your results and feedback.
-* Share this post with anyone who might find it interesting or useful.
-* Let's connect and collaborate on other exciting AI projects!
 
-**Hashtags: #promptengineering #NLP #AIforGood #accessibility**
 
-<!--EndFragment-->
+
