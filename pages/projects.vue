@@ -25,6 +25,9 @@ useHead({
 
 interface GitHubData {
     name: string;
+    owner: {
+        avatar_url: string;
+    };
     description: string;
     html_url: string;
     created_at: string;
@@ -47,6 +50,8 @@ const getThumbnail = (topics: string[]): string => {
             return "/images/uploads/python.png"
         case topics.indexOf('go') !== -1:
             return "/images/uploads/gopher.png"
+        case topics.indexOf('canipark') !== -1:
+            return "/images/uploads/logo.png"
         default:
             return "/img/socials/github.svg"
     }

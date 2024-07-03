@@ -1,6 +1,6 @@
 <template>
   <a :href="content.path" class="card box">
-    <div class="card-image has-background-white">
+    <div class="card-image has-background-white p-2">
       <figure class="image is-4by3">
         <img :src="content.thumbnail" :alt="`Thumbnail image of ${content.title}`">
       </figure>
