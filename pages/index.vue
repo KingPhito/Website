@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-gapless has-background-primary full-height">
     <div class="column is-one-fifth has-background-primary full-height">
-      <div class="card">
+      <div class="card has-background-white">
         <div class="card-image">
           <figure class="image is-4by3">
             <img src="/img/profile.jpg"
@@ -34,7 +34,7 @@
         </footer>
       </div>
     </div>
-    <div class="column is-four-fifths has-background-white">
+    <div class="column is-four-fifths has-background-primary">
       <section class="section">
         <div class="columns">
           <div class="column is-one-quarter" v-for="social in socials">
@@ -105,6 +105,15 @@ body {
 
 .full-height {
   height: 100%;
+}
+
+.title {
+  color: $primary;
+}
+
+.content {
+  font-size: 1.2rem;
+  color: #000;
 }
 
 .box {

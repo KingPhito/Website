@@ -10,12 +10,12 @@ export default defineNuxtConfig({
         head: {
             charset: 'utf-16',
             viewport: 'width=device-width, initial-scale=1',
-            title: 'Ralph Dugue | Software Engineer',
+            title: 'Software Engineer | Consultant | Content Creator',
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
             ],
             meta: [
-                { name: 'description', content: 'Ralph Dugue - Software Engineer | Content Creator' }
+                { name: 'description', content: 'Ralph Dugue - Software Engineering Content' }
             ],
         }
     },

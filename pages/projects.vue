@@ -34,12 +34,14 @@ interface GitHubData {
     topics: string[];
 }
 
-const API_ENDPOINT = 'https://api.github.com/orgs/KingPhito/repos'
+const API_ENDPOINT = 'https://api.github.com/orgs/PhitoDev/repos'
 
 const getThumbnail = (topics: string[]): string => {
     switch (true) {
         case topics.indexOf('android') !== -1:
             return "/images/uploads/android_robot.png"
+        case topics.indexOf('kogent') !== -1:
+            return "/images/uploads/kogent.png"
         case topics.indexOf('grpc') !== -1:
             return "/images/uploads/grpc.png"
         case topics.indexOf('kotlin') !== -1:

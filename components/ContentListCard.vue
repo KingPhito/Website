@@ -1,6 +1,6 @@
 <template>
   <a :href="content.path" class="card box">
-    <div class="card-image has-background-white p-2">
+    <div class="card-image p-2 has-background-white">
       <figure class="image is-4by3">
         <img :src="content.thumbnail" :alt="`Thumbnail image of ${content.title}`">
       </figure>
@@ -31,6 +31,14 @@ const props = defineProps<{ content: CardContent }>()
 @import "../assets/css/main.scss";
 
 .card {
+  background-color: cornflowerblue;
+
+  .card-content {
+    .content {
+      color: $primary;
+    }
+  }
+
   &:hover {
     background-color: $secondary;
 
