@@ -1,52 +1,41 @@
 <template>
-  <div class="columns is-gapless has-background-primary full-height">
-    <div class="column is-one-fifth has-background-primary full-height">
-      <div class="card has-background-white">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="/img/profile.jpg"
-              alt="A picture of my beautiful face. I am wearing headphones and have a high-top fade" />
-          </figure>
+  <div class="container full-height is-max-widescreen">
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-3by3">
+          <img class="is-rounded" src="/img/profile.jpg" alt="Ralph Dugue" />
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <h1 class="title is-primary">About Me</h1>
+          <p>
+            I'm a software engineer, and quadriplegic wheelchair user. I'm passionate about
+            accessibility, and creating software that improves the lives of others. Professionally, I have been a
+            software engineer for over a decade, doing full-stack mobile and web development for small to medium, fast
+            growing businesses. More recently I have been working a lot with machine learning and generative AI. I enjoy
+            working with Kotlin and Python. I also have experience with TypeScript and Nuxt,
+            which is what this site is built with. I use this website to keep track of my writing and all the projects I
+            am working on. In my free time I am videogame nerd, basketball nerd, and chess nerd.
+          </p>
         </div>
-        <div class="card-content">
-          <div class="media">
-            <div class="media-content">
-              <p class="title is-4">About Me</p>
-            </div>
-          </div>
-          <div class="content">
-            I'm Ralph. I am a quadriplegic wheelchair user, videogame nerd,
-            basketball nerd, and slowly becoming a chess nerd 😀. This website is
-            my attempt at documenting all the things I'm working on. I try to write about
-            the things I'm learning, the things I'm building, and the things I'm thinking about.
-            <br />
-            <br />
-            Professionally, I have been a software engineer for over 10 years,
-            doing full-stack mobile and web development for small to medium, fast growing businesses.
-            I enjoy working with Kotlin, Typescript, Python, and hopefully Rust soon. I am also acquiring
-            machine learning skills, and I am excited to see how I can apply them to my projects.
-            <br />
-            <br />
-          </div>
+        <div class="level">
+          <a href="/resume.pdf" class="button is-large is-secondary">Resume</a>
         </div>
-        <footer class="card-footer">
-          <a href="/resume.pdf" class="card-footer-item">Resume</a>
-        </footer>
       </div>
-    </div>
-    <div class="column is-four-fifths has-background-primary">
-      <section class="section">
-        <div class="columns">
-          <div class="column is-one-quarter" v-for="social in socials">
-            <a :href="social.linkUrl" class="box">
-              <figure class="image is-3by3">
-                <img :src="social.imageUrl" :alt="social.alt" style="object-fit: cover;" />
-              </figure>
-            </a>
-          </div>
+    </article>
+    <section class="section has-background-secondary">
+      <h1 class="title">Connect With Me</h1>
+      <div class="columns">
+        <div class="column is-one-quarter" v-for="social in socials">
+          <a :href="social.linkUrl" class="box">
+            <figure class="image is-3by3">
+              <img :src="social.imageUrl" :alt="social.alt" style="object-fit: cover;" />
+            </figure>
+          </a>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -103,12 +92,33 @@ body {
   height: 100%;
 }
 
+.is-secondary {
+  color: $primary;
+  background-color: $secondary-light;
+
+  &:hover {
+    background-color: $secondary;
+  }
+}
+
 .full-height {
   height: 100%;
 }
 
+.media {
+  margin-bottom: 2rem;
+
+  .title {
+    margin-bottom: 1rem;
+    color: $primary;
+
+  }
+}
+
 .title {
+  margin-bottom: 1rem;
   color: $primary;
+
 }
 
 .content {

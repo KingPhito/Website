@@ -173,10 +173,6 @@ const route = useRoute();
 </script>
 
 <style scoped>
-.navbar-menu {
-  padding: 0%;
-}
-
 .navbar-end .navbar-item {
   color: #552582;
   font-weight: 600;

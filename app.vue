@@ -1,7 +1,7 @@
 <template>
-  <NavHeader />
 
-  <body class="has-background-primary">
+  <body class="has-background-white">
+    <NavHeader />
     <Suspense>
       <NuxtPage />
       <template #fallback> Loading... </template>
